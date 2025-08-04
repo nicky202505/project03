@@ -5,6 +5,10 @@
     "Source Han Sans CN", sans-serif;
 }
 
+*{
+/*   border: 1px solid red ;    */ 
+}
+
 .main-container {
   overflow: hidden;
 }
@@ -25,9 +29,8 @@ button {
   position: relative;
   width: 1920px;
   height: 14948px;
-  margin: 0 auto;
-  background: #f3e9e9;
-  overflow: hidden;
+  margin: 0 auto; 
+
 }
 .header-wrap {
   position: relative;
@@ -35,7 +38,7 @@ button {
   height: 189px;
   margin: 0 0 0 0;
   border: 10px solid #e02020;
-  overflow: hidden;
+
 }
 .header-container {
   position: absolute; 
@@ -44,10 +47,9 @@ button {
   height: 189px;  
   top: -10px;
   left: 50%;
-  border: 1px solid #462ac2;
+/*   border: 1px solid #462ac2; */
   transform: translate(-50.89%, 0);
-  z-index: 1;
-  overflow: hidden;
+  z-index: 1; 
 }
 .top_utility {
   position: relative;
@@ -55,37 +57,106 @@ button {
   height: 44px;
   margin: 0 0 0 50px;
   border: 1px solid #a61d1d;
-  z-index: 2;
-  overflow: hidden;
+  z-index: 2; 
 }
 .nav_bar {
   position: relative;
   width: 1049px;
   height: 49px;
-  margin: 87px 0 0 71px;
+  margin: 87px 0 0 70px;
   z-index: 4;
 }
-.login {
+/* .login {
   position: absolute;
-  width: 266px;
+  width: 200px;
   height: 49px;
   top: 0;
   left: 783px;
   border: 1px solid #d42929;
   z-index: 4;
-  overflow: hidden;
-}
+} */
+
+
 .top-menu {
   position: absolute;
-  width: 784px;
+  width: 790px;
   height: 48px;
   top: 1px;
-  left: 0;
+  left: 0; 
   border: 2px solid #df2424;
   z-index: 3;
-  overflow: hidden;
+  margin: 0 0 0 70px ;  
+  padding : 0 ; 
+} 
+
+/* depth1 메뉴(상위)는 항상 보임, dep2/dep3만 드롭다운 */ 
+
+ul{
+  list-style: none; 
+  color : #000 ; 
+} 
+
+ul.dep1, ul.dep2 {
+  display : flex ; 
+} 
+
+li.depth1 {
+  width : 150px ; 
+  height : 20px ; 
+  margin : 20px ; 
 }
-.ci {
+
+
+ul.dep2,
+ul.dep3 {
+  display: none;  
+}
+
+.w100{
+  width: 100vw;
+  height: 0;
+  background: red ; 
+  position: absolute; 
+  left: 0;
+  top: 100%;
+  z-index: 100; 
+  transition: height 0.3s;  
+   } 
+
+
+ul.dep1 > li.depth1:hover .w100 {
+  height: 800px;  
+}
+
+
+/* 호버된 depth1의 하위 메뉴만 드롭다운 */
+ul.dep1 > li.depth1:hover > ul.dep2 {
+  display: flex;
+  width: 100vw ; 
+  height: 800px;
+/*   background: #fff;
+ */  color: #000;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+   transform: translateX(-calc((100vw - 100%) / 2));
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  padding: 16px 0;
+  font-size: 1rem;
+}
+
+ul.dep1 > li.depth1:hover ul.dep3 {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  position: static;
+  box-shadow: none;
+  padding: 0;
+} 
+
+
+/* .ci {
   position: absolute;
   width: 200px;
   height: 70px;
@@ -94,8 +165,8 @@ button {
   border: 1px solid #ea2121;
   z-index: 5;
   overflow: hidden;
-}
-.banner {
+} */
+/* .banner {
   position: relative;
   width: 1920px;
   height: 1080px;
@@ -124,7 +195,7 @@ button {
   border: 10px solid #bb2929;
   z-index: 8;
   overflow: hidden;
-}
+} */
 .titile {
   position: relative;
   width: 1280px;
