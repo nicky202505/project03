@@ -5,12 +5,8 @@
     "Source Han Sans CN", sans-serif;
 }
 
-*{
-/*   border: 1px solid red ;    */ 
-}
-
 .main-container {
-  overflow: hidden;
+/*   overflow: hidden; */
 }
 
 .main-container,
@@ -27,31 +23,35 @@ button {
 
 .main-container {
   position: relative;
-  width: 1920px;
-  height: 14948px;
-  margin: 0 auto; 
-
+  width : 100% ;   
+  height: auto ; 
+  margin: 0 0 50px ;  
+  z-index : -100; 
 }
+
+
 .header-wrap {
   position: relative;
   width: 100% ; 
   height: 189px;
   margin: 0 0 0 0;
-  border: 10px solid #e02020;
+  border: 10px solid #e02020; 
+  z-index : 200 ; 
 
 }
 .header-container {
-  position: absolute; 
+  position: relative; 
   width : 100% ; 
  max-width: 1120px;
   height: 189px;  
   top: -10px;
   left: 50%;
-/*   border: 1px solid #462ac2; */
+  border: 1px solid #c22a37;
   transform: translate(-50.89%, 0);
-  z-index: 1; 
+  z-index: 1;
+
 }
-.top_utility {
+.util {
   position: relative;
   width: 1020px;
   height: 44px;
@@ -59,104 +59,140 @@ button {
   border: 1px solid #a61d1d;
   z-index: 2; 
 }
-.nav_bar {
-  position: relative;
-  width: 1049px;
-  height: 49px;
-  margin: 87px 0 0 70px;
-  z-index: 4;
-}
-/* .login {
+
+
+
+.login {
   position: absolute;
-  width: 200px;
+  width: 266px;
   height: 49px;
   top: 0;
   left: 783px;
   border: 1px solid #d42929;
   z-index: 4;
-} */
+  margin: 900x 0 0 71px;
+
+}
 
 
-.top-menu {
-  position: absolute;
+.nav_bar {
+  position:relative;
   width: 790px;
   height: 48px;
   top: 1px;
   left: 0; 
-  border: 2px solid #df2424;
-  z-index: 3;
-  margin: 0 0 0 70px ;  
-  padding : 0 ; 
-} 
+  border: 2px solid #df2424; 
+  padding : 0 ;  
+  align-items: center; 
+  margin: 87px 0 0 70px ; 
+}  
 
-/* depth1 메뉴(상위)는 항상 보임, dep2/dep3만 드롭다운 */ 
+
 
 ul{
   list-style: none; 
-  color : #000 ; 
-} 
+  color : #000 ;  
+  padding-left : 0 ;       
+}  
 
-ul.dep1, ul.dep2 {
+
+ul.dep1 {
   display : flex ; 
+  position : relative ;   
+  color : black ; 
 } 
 
-li.depth1 {
-  width : 150px ; 
-  height : 20px ; 
-  margin : 20px ; 
+
+
+ul.dep1>li.depth1 {
+  position : relative ; 
+  width : 110px ;  
+  font-size : 16px ; 
+}      
+
+ul.dep2 {
+  display: flex;
+  position: relative ; 
+ /*  top: 50%; */
+  left: 0;
+  width: 780px;
+  height: 70px; 
+  box-sizing: border-box;   
+  position : relative ;   
+  color : rgb(26, 25, 25) ;  
+  z-index : 150 ; 
+}
+
+ul.dep2 > li.depth2 {
+  width: 110px;
+  height: 70px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* dep3의 기준점 */
+}
+
+
+ul.dep3 {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 110px; 
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  z-index: 200 ;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
 }
 
 
 ul.dep2,
 ul.dep3 {
-  display: none;  
+  display: none;
 }
 
-.w100{
+
+
+ul.dep3 > li.depth3 {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px; 
+  color: black  ; 
+}
+
+
+
+
+.w100 {
+  position: fixed;
+  left: 50%;
+  top: 180px; /* nav_bar 하단에 맞게 조정 */
   width: 100vw;
   height: 0;
-  background: red ; 
-  position: absolute; 
-  left: 0;
-  top: 100%;
-  z-index: 100; 
-  transition: height 0.3s;  
-   } 
+  background: #b2d1b9;
+  z-index: 100 ; 
+  transition: height 0.3s;
+  transform: translateX(-50%);  
+}
 
+ul.dep2, ul.dep3 { display: none; }
+ul.dep1 > li.depth1:hover > ul.dep2 { display: flex; }
+ul.dep1 > li.depth1:hover ul.dep3 { display: flex; flex-direction: column; }
 
-ul.dep1 > li.depth1:hover .w100 {
-  height: 800px;  
+ul.dep1:hover ~ .w100,
+ul.dep1:focus-within ~ .w100 {
+  height: 400px; /* 원하는 드롭다운 높이 */ 
 }
 
 
-/* 호버된 depth1의 하위 메뉴만 드롭다운 */
-ul.dep1 > li.depth1:hover > ul.dep2 {
-  display: flex;
-  width: 100vw ; 
-  height: 800px;
-/*   background: #fff;
- */  color: #000;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 10;
-   transform: translateX(-calc((100vw - 100%) / 2));
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  padding: 16px 0;
-  font-size: 1rem;
-}
-
-ul.dep1 > li.depth1:hover ul.dep3 {
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  position: static;
-  box-shadow: none;
-  padding: 0;
-} 
 
 
-/* .ci {
+
+.ci {
   position: absolute;
   width: 200px;
   height: 70px;
@@ -165,37 +201,28 @@ ul.dep1 > li.depth1:hover ul.dep3 {
   border: 1px solid #ea2121;
   z-index: 5;
   overflow: hidden;
-} */
-/* .banner {
-  position: relative;
-  width: 1920px;
-  height: 1080px;
-  margin: 0 0 0 0;
-  border: 10px solid #bb2929;
-  z-index: 6;
-  overflow: hidden;
 }
-.banner-1 {
-  position: absolute;
-  width: 1920px;
-  height: 1080px;
-  top: -10px;
-  left: -10px;
-  border: 10px solid #bb2929;
-  z-index: 7;
-  overflow: hidden;
-}
-.banner-2 {
-  position: absolute;
-  width: 1920px;
-  height: 1080px;
-  top: -10px;
-  left: -10px;
-  background: #d4d2b0;
-  border: 10px solid #bb2929;
-  z-index: 8;
-  overflow: hidden;
-} */
+
+     .swiper { 
+      position: absolute;
+      width : 100% ; 
+      max-width: 1920px ;
+      height : 1080px ;  
+      padding-top : 70px ;       
+    }
+
+ 
+ 
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ccc;
+    }
+
 .titile {
   position: relative;
   width: 1280px;
@@ -392,7 +419,7 @@ ul.dep1 > li.depth1:hover ul.dep3 {
   z-index: 28;
   overflow: hidden;
 }
-.titile-a {
+.title-a {
   position: relative;
   width: 1020px;
   height: 60px;

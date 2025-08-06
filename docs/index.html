@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>신세계 백화점 - 클론 코딩 </title>
     
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
   </head>
   <body>  
     
@@ -25,10 +27,10 @@
          
              
            
-           <div class="nav_bar">  
+           <div class="nav_bar">     <!-- 메인 메뉴 시작  -->  
           
              
-                <!-- 메인 메뉴 시작  -->  
+             
                  <ul class="dep1"> 
                     
                      
@@ -185,15 +187,20 @@
     <div class="main-container"> 
 
       <!-- banner -->
-      <div class="banner"> 
-        <div class="banner1"></div>
-        <div class="banner2"></div>
-        <div class="banner3"></div> 
-     </div>   
+     
+   <div class="swiper horizontals">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><span>1</span><img src="img/banner01.png" alt="배너1" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="swiper-slide"><span>2</span><img src="img/banner02.jpg" alt="배너2" style="width:100%;height:100%;object-fit:cover;">2</div>
+      <div class="swiper-slide"><span>3</span><img src="img/banner03.jpg" alt="배너3" style="width:100%;height:100%;object-fit:cover;">3</div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+  
 
 
 <!-- 쇼핑 뉴스  -->
-      <div class="titile"></div>
+      <div class="title"></div>
       <div class="desc"></div>
       <div class="more-info-style"></div>
 
@@ -233,6 +240,17 @@
       <div class="title-c"></div>
       <div class="magazin-box"></div>
     </div>  
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+   
+ <!--  <script src=h_swiper.js></script>  -->
+ 
+ <script src="script/h_swiper03.js"></script>  
+
+
+
+
 
   </body>
 </html>
