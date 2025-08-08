@@ -3,30 +3,20 @@
     Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
     "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
     "Source Han Sans CN", sans-serif;
-}
+}  
 
-.main-container {
-/*   overflow: hidden; */
-}
+*{
+    margin : 0 ; 
+    padding : 0 ; } 
 
-.main-container,
-.main-container * {
-  box-sizing: border-box;
-}
+
+
 
 input,
 select,
 textarea,
 button {
   outline: 0;
-}
-
-.main-container {
-  position: relative;
-  width : 100% ;   
-  height: auto ; 
-  margin: 0 0 50px ;  
-  z-index : -100; 
 }
 
 
@@ -193,7 +183,8 @@ ul.dep1:focus-within ~ .w100 {
 
 
 .ci {
-  position: absolute;
+  position: absolute; 
+  display: flex;
   width: 200px;
   height: 70px;
   top: 120px;
@@ -203,40 +194,93 @@ ul.dep1:focus-within ~ .w100 {
   overflow: hidden;
 }
 
+
      .swiper { 
       position: absolute;
-      width : 100% ; 
-      max-width: 1920px ;
+      width : 100% ;       
+      max-width : 2100px ;      
       height : 1080px ;  
-      padding-top : 70px ;       
+      margin: auto ;
+      padding-top : 70px ;    
+          
+
+    } 
+
+
+    .swiper-wrapper{
+        margin-left : 180px ;      
+        width : 100% ; 
+        max-width : 1920px ;      
     }
 
  
+    .prev_box{
+        width : 1920px ; 
+        height : 1080px ;  
+         background: green;
+        transform: translateX(-180px); 
+        position: absolute;
+    }
  
+      .banner-anim {
+  width: 0;
+  height: 100%;
+  object-fit: cover;
+  transition: width 1s cubic-bezier(0.4,0,0.2,1);
+  display: inline-block;
+  vertical-align: top;
+}
+
+ .banner-anim.show {
+  width: 100%;
+}
 
     .swiper-slide {
       text-align: center;
-      font-size: 18px;
-      display: flex;
+      font-size: 18px;    
       justify-content: center;
       align-items: center;
-      background: #ccc;
-    }
+/*       background: #ccc;
+ */    }
 
-.titile {
+
+
+ .main-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 100px; 
+  box-sizing: border-box;     
+  z-index: 1;  
+  border: 1px red solid ; 
+  padding-top : 300px  ; 
+}
+
+
+
+ .shopping_now{ 
+  width : 100% ; 
+  max-width : 1280px ; 
+  height : auto ; 
+  border : 1px red solid ;   
+  text-align: center;  
+  margin: auto ; 
+
+ }
+
+.title {
+  position: relative;
+  width: 1280px;
+  height: 60px;  
+  margin : auto ; 
+}
+
+
+.desc {
   position: relative;
   width: 1280px;
   height: 60px;
-  margin: 200px 0 0 330px;
-  border: 5px solid #000000;
-  z-index: 10;
-  overflow: hidden;
-}
-.desc {
-  position: relative;
-  width: 1277px;
-  height: 60px;
-  margin: 37px 0 0 333px;
+  margin : auto ;  
   border: 1px solid #dc3c3c;
   z-index: 11;
   overflow: hidden;
@@ -245,27 +289,43 @@ ul.dep1:focus-within ~ .w100 {
   position: relative;
   width: 126px;
   height: 45px;
-  margin: 35px 0 0 907px;
+  margin : auto ; 
   border: 10px solid #181515;
   z-index: 12;
   overflow: hidden;
 }
-.titile-gallery {
+
+
+.shin_now{
+  width : 100% ; 
+  max-width : 1280px ; 
+  height : auto ; 
+  border : 1px red solid ;   
+  text-align: center;  
+  margin: 160px auto ;  
+}
+
+
+
+.title-gallery {
   position: relative;
   width: 1280px;
-  height: 60px;
-  margin: 290px 0 0 350px;
-  border: 5px solid #000000;
+  height: 60px; 
+  margin : auto ; 
+  border: 1px solid #000000;
   z-index: 14;
   overflow: hidden;
 }
-.flex-row-ca {
+
+.gal-swiper{
   position: relative;
   width: 1280px;
-  height: 344px;
-  margin: 75px 0 0 350px;
-  z-index: 18;
+  height: 344px; 
+  margin : 160px auto ; 
+  z-index: 18; 
 }
+
+
 .image-box {
   position: absolute;
   width: 232px;
@@ -310,49 +370,54 @@ ul.dep1:focus-within ~ .w100 {
   z-index: 18;
   overflow: hidden;
 }
+
+
 .desc-6 {
   position: relative;
   width: 683px;
-  height: 20px;
-  margin: 69px 0 0 582px;
+  height: 20px;  
+    margin : auto ; 
   border: 1px solid #a92b2b;
   z-index: 19;
   overflow: hidden;
 }
+
+
 .desc-7 {
   position: relative;
   width: 683px;
   height: 20px;
-  margin: 68px 0 0 582px;
+    margin : auto ; 
   border: 1px solid #a92b2b;
   z-index: 20;
   overflow: hidden;
 }
+
+
 .sns-icons {
   position: relative;
   width: 683px;
   height: 20px;
-  margin: 76px 0 0 582px;
+  margin : auto ; 
   border: 1px solid #a92b2b;
   z-index: 21;
   overflow: hidden;
 }
-.title {
-  position: relative;
-  width: 1280px;
-  height: 60px;
-  margin: 604px 0 0 332px;
-  border: 5px solid #211e1e;
-  z-index: 23;
-  overflow: hidden;
+
+
+.art_culture{
+  margin : auto ;  
 }
-.flex-row-ad {
+
+
+
+.art_box {
   position: relative;
   width: 3929px;
   height: 720px;
-  margin: 53px 0 0 -1144px;
+  margin : auto ;  
   z-index: 29;
-}
+} 
 .playbox {
   position: absolute;
   width: 2000px;
@@ -418,58 +483,102 @@ ul.dep1:focus-within ~ .w100 {
   border: 1px solid #b53434;
   z-index: 28;
   overflow: hidden;
+} 
+
+.brand{
+  width : 100% ; 
+  max-width : 1280px ; 
+  margin : 200px auto ;  
+  border: 1px solid red; 
+  text-align : center ;      
 }
+
+
+
 .title-a {
   position: relative;
   width: 1020px;
   height: 60px;
-  margin: 200px 0 0 462px;
   border: 5px solid #211e1e;
   z-index: 31;
-  overflow: hidden;
+    margin : auto ;
+
 }
 .action-bar {
   position: relative;
   width: 1280px;
   height: 60px;
-  margin: 47px 0 0 332px;
   border: 5px solid #211e1e;
   z-index: 32;
-  overflow: hidden;
+    margin : auto ;
+
 }
+
+
 .gallery-box {
   position: relative;
   width: 1020px;
   height: 1122px;
-  margin: 94px 0 0 462px;
   border: 2px solid #b51414;
   z-index: 33;
-  overflow: hidden;
+    margin : auto ;
+
 }
 .more-info-style-b {
   position: relative;
   width: 126px;
   height: 45px;
-  margin: 48px 0 0 909px;
+  margin : auto ;
   border: 10px solid #181515;
   z-index: 34;
   overflow: hidden;
 }
+
+
+
+.magazin{ 
+    width : 100% ; 
+  max-width : 1280px ; 
+  margin : 200px auto ;  
+  border: 1px solid red; 
+  text-align : center ;    
+
+
+}
+
+
 .title-c {
   position: relative;
   width: 1120px;
   height: 60px;
-  margin: 200px 0 0 400px;
+  margin: auto;
   border: 5px solid #211e1e;
-  z-index: 36;
-  overflow: hidden;
+  z-index: 36;  
 }
+
+
 .magazin-box {
   position: relative;
   width: 1120px;
-  height: 6699px;
-  margin: 137px 0 0 400px;
+  height: 3000px ; 
+   margin: auto;
   border: 2px solid #bc1d1d;
-  z-index: 37;
-  overflow: hidden;
+  z-index: 37; 
 }
+
+
+ .banner-stack {
+  position: relative;
+  width: 5760px; /* 1920px * 3 */
+  height: 600px;} /* 원하는 높이로 조정 */ 
+
+
+.banner-anim {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 100%;
+  object-fit: cover;
+  transition: width 1s cubic-bezier(0.4,0,0.2,1);
+} 
+
