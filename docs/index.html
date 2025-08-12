@@ -55,7 +55,7 @@
                     <ul class="dep2"> 
                       <li class="depth2"><h3>신세계 백화점</h3>                      
                          <ul class="dep3"> 
-                          <li >
+                          <li class >
                               <dl>                              
                               <dd>강남점</dd>
                               <dd>센텀시티 </dd>
@@ -352,70 +352,151 @@
   
 
 <!-- 메인 배너 종횡  -->
-<script> 
-
-window.addEventListener('DOMContentLoaded', function() {
+<script>
+window.addEventListener('DOMContentLoaded', function () {
   const imgs = document.querySelectorAll('.banner-anim');
-  const imgWidth = 1920;
-  const expandDuration = 1800;
-  const delayBetween = 200; 
+  if (imgs.length < 3) return; // 안전장치
 
-  function expandLeftToRight(index) { 
-    
+  // ------ 설정값 ------
+  // 반응형을 원하면 imgWidth = banner.offsetWidth 로 두세요.
+  const banner = document.querySelector('.banner-wrap');
+  const getImgWidth = () => banner ? banner.offsetWidth : 1920;
+  let imgWidth = getImgWidth();
+
+  const expandDuration = 1800;   // 애니메이션 시간(ms)
+  const delayBetween   = 200;    // 배너 사이 간격(ms)
+
+  // 리사이즈 시에도 자연스럽게
+  window.addEventListener('resize', () => {
+    imgWidth = getImgWidth();
+  });
+
+  // ------ 유틸리티 ------
+  function disableTransition(el) {
+    el.style.transition = 'none';
+    void el.offsetWidth; // 강제 리플로우로 transition:none 적용 확정
+  }
+  function enableTransition(el) {
+    el.style.transition =
+      `left ${expandDuration}ms cubic-bezier(0.4,0,0.2,1), ` +
+      `width ${expandDuration}ms cubic-bezier(0.4,0,0.2,1)`;
+    void el.offsetWidth; // 적용 확정
+  }
+  function enableTransitionAll(list) {
+    list.forEach(enableTransition);
+  }
+  function disableTransitionAll(list) {
+    list.forEach(disableTransition);
+  }
+
+  // 모든 배너 초기화(transition OFF 상태에서 즉시 세팅)
+  function resetAll(visibleIndex = 0) {
+    disableTransitionAll(imgs);
+    imgs.forEach((img, i) => {
+      img.style.left = '0px';
+      img.style.width = '0px';
+      img.style.visibility = (i === visibleIndex) ? 'visible' : 'hidden';
+      img.style.zIndex = String(2 + i);
+    });
+    void banner?.offsetWidth; // 스타일 확정
+  }
+
+  // ------ 시퀀스 1: 1→2→3 (좌→우) ------
+  function expandLeftToRight(index) {
+    if (index === 0) {
+      // 루프 첫 진입: 초기화는 transition OFF로, 이후 ON으로 전환
+      resetAll(0);
+      requestAnimationFrame(() => {
+        enableTransitionAll(imgs);
+      });
+    }
+
     if (index >= imgs.length) {
+      // 1세트 끝 → 1번 우→좌 시퀀스로
       setTimeout(() => expandRightToLeft(), delayBetween);
       return;
     }
-    imgs[index].style.left = '0';
-    imgs[index].style.width = imgWidth + 'px';
-    imgs[index].style.zIndex = 2 + index;
-    imgs[index].style.visibility = 'visible';
+
+    // 현재 배너 펼치기 (좌→우)
+    const el = imgs[index];
+    el.style.visibility = 'visible';
+    el.style.left = '0px';
+    el.style.width = imgWidth + 'px';
+    el.style.zIndex = String(2 + index);
+
     setTimeout(() => {
       expandLeftToRight(index + 1);
     }, expandDuration + delayBetween);
   }
 
+  // ------ 시퀀스 2: 1번 (우→좌) ------
   function expandRightToLeft() {
+    // 순간 초기화(transition OFF) : 1번만 보이게 하고 오른쪽 바깥으로 이동 준비
+    disableTransitionAll(imgs);
     imgs.forEach((img, i) => {
-      img.style.width = '0';
-      img.style.left = '0';
+      img.style.width = '0px';
+      img.style.left = '0px';
       img.style.visibility = (i === 0) ? 'visible' : 'hidden';
     });
-    imgs[0].style.left = imgWidth + 'px';
-    imgs[0].style.width = '0';
-    imgs[0].style.zIndex = 10;
-    setTimeout(() => {
-      imgs[0].style.transition = `left ${expandDuration}ms cubic-bezier(0.4,0,0.2,1), width ${expandDuration}ms cubic-bezier(0.4,0,0.2,1)`;
-      imgs[0].style.left = '0';
-      imgs[0].style.width = imgWidth + 'px';
-      setTimeout(() => expandLeftToRightFrom2(), expandDuration + delayBetween);
-    }, delayBetween);
-  }
+    imgs[0].style.left = imgWidth + 'px'; // 오른쪽 밖으로 점프
+    imgs[0].style.width = '0px';
+    imgs[0].style.zIndex = '10';
+    void banner?.offsetWidth;
 
-  function expandLeftToRightFrom2() {
-    imgs[0].style.visibility = 'hidden';
-    imgs[1].style.visibility = 'visible';
-    imgs[2].style.visibility = 'visible';
-    imgs[1].style.width = '0';
-    imgs[2].style.width = '0';
-    imgs[1].style.left = '0';
-    imgs[2].style.left = '0';
-    imgs[1].style.zIndex = 11;
-    imgs[2].style.zIndex = 12;
+    // 다음 프레임에 transition ON 후 실제 애니메이션 시작
     setTimeout(() => {
-      imgs[1].style.width = imgWidth + 'px';
+      enableTransition(imgs[0]);
+      imgs[0].style.left = '0px';
+      imgs[0].style.width = imgWidth + 'px';
+
       setTimeout(() => {
-        imgs[2].style.width = imgWidth + 'px';
-        // 무한 반복: 다시 expandLeftToRight(0) 호출
-        setTimeout(() => expandLeftToRight(0), expandDuration + delayBetween);
+        expandLeftToRightFrom2();
       }, expandDuration + delayBetween);
     }, delayBetween);
   }
 
-  // 최초 시작
+  // ------ 시퀀스 3: 2→3 (좌→우) ------
+  function expandLeftToRightFrom2() {
+    // 초기화(transition OFF)
+    disableTransition(imgs[1]);
+    disableTransition(imgs[2]);
+
+    imgs[0].style.visibility = 'hidden';
+    imgs[1].style.visibility = 'visible';
+    imgs[2].style.visibility = 'visible';
+
+    imgs[1].style.left = '0px';
+    imgs[1].style.width = '0px';
+    imgs[1].style.zIndex = '11';
+
+    imgs[2].style.left = '0px';
+    imgs[2].style.width = '0px';
+    imgs[2].style.zIndex = '12';
+
+    void banner?.offsetWidth;
+
+    // transition ON 후 2→3 순차 확장
+    requestAnimationFrame(() => {
+      enableTransition(imgs[1]);
+      enableTransition(imgs[2]);
+
+      setTimeout(() => {
+        imgs[1].style.width = imgWidth + 'px';
+
+        setTimeout(() => {
+          imgs[2].style.width = imgWidth + 'px';
+
+          // 한 세트 완료 → 다시 1→2→3 좌→우 루프 재시작
+          setTimeout(() => expandLeftToRight(0), expandDuration + delayBetween);
+        }, expandDuration + delayBetween);
+      }, delayBetween);
+    });
+  }
+
+  // ------ 루프 시작 ------
   expandLeftToRight(0);
 });
-</script> 
+</script>
  
 <!-- prev 페이드 -->
 <script>
