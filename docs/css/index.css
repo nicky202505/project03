@@ -209,13 +209,12 @@ ul.dep3 {
   position: fixed;
   left: 50%;
   top: 114px; /* nav_bar 하단에 맞게 조정 */
-  width: 130vw;
+  width: 100vw;
   height: 0;
-  background: #ffffff ;
-  z-index: 30000 ;  
+  background: #b2d1b9;
+  z-index: 1000 ; 
   transition: height 0.3s;
-  transform: translateX(-50%);    
-  box-shadow: 0px 2px 2px 0px #999;  
+  transform: translateX(-50%);  
 }
 
 ul.dep2, ul.dep3 { display: none; }
@@ -224,7 +223,9 @@ ul.dep1 > li.depth1:hover ul.dep3 { display: flex; flex-direction: column; }
 
 ul.dep1:hover ~ .w100,
 ul.dep1:focus-within ~ .w100 {
-  height: 400px; } /* 원하는 드롭다운 높이 */  
+  height: 400px; /* 원하는 드롭다운 높이 */ 
+}
+
 
 
 
