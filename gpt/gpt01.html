@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>신세계 백화점 - 클론 코딩</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="gpt01.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+  <!-- Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+  <!-- App JS -->
+  <script src="gpt01.js" defer></script>
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <div class="header-wrap">
+    <div class="header-container">
+      <div class="util"></div>
+      <div class="login"></div>
+
+      <!-- GNB -->
+      <nav class="nav_bar">
+        <ul class="dep1">
+          <li class="depth1">lorem1-1
+            <ul class="dep2">
+              <li class="depth2">ipsum1-1-2
+                <ul class="dep3">
+                  <li class="depth3">ipsum1-1-3</li>
+                  <li class="depth3">ipsum1-1-3</li>
+                  <li class="depth3">ipsum1-1-3</li>
+                  <li class="depth3">ipsum1-1-3</li>
+                  <li class="depth3">ipsum1-1-3</li>
+                  <li class="depth3">ipsum1-1-3</li>
+                  <li class="depth3">ipsum1-1-3</li>
+                  <li class="depth3">ipsum1-1-3</li>
+                  <li class="depth3">ipsum1-1-3</li>
+                  <li class="depth3">ipsum1-1-3</li>
+                </ul>
+              </li>
+              <li class="depth2">ipsum2</li>
+              <li class="depth2">ipsum2</li>
+              <li class="depth2">ipsum2</li>
+            </ul>
+          </li>
+
+          <li class="depth1">lorem1-2
+            <ul class="dep2">
+              <li class="depth2">ipsum1-2-2
+                <ul class="dep3">
+                  <li class="depth3">ipsum1-2-3</li><li class="depth3">ipsum1-2-3</li>
+                  <li class="depth3">ipsum1-2-3</li><li class="depth3">ipsum1-2-3</li>
+                  <li class="depth3">ipsum1-2-3</li><li class="depth3">ipsum1-2-3</li>
+                  <li class="depth3">ipsum1-2-3</li><li class="depth3">ipsum1-2-3</li>
+                  <li class="depth3">ipsum1-2-3</li><li class="depth3">ipsum1-2-3</li>
+                </ul>
+              </li>
+              <li class="depth2">ipsum2</li>
+              <li class="depth2">ipsum2</li>
+              <li class="depth2">ipsum2</li>
+            </ul>
+          </li>
+
+          <li class="depth1">lorem1-3
+            <ul class="dep2">
+              <li class="depth2">ipsum1-3-2
+                <ul class="dep3">
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                </ul>
+              </li>
+              <li class="depth2">ipsum2</li>
+              <li class="depth2">ipsum2</li>
+              <li class="depth2">ipsum2</li>
+            </ul>
+          </li>
+
+          <li class="depth1">lorem1-4
+            <ul class="dep2">
+              <li class="depth2">ipsum1-3-2
+                <ul class="dep3">
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                </ul>
+              </li>
+              <li class="depth2">ipsum2</li>
+              <li class="depth2">ipsum2</li>
+              <li class="depth2">ipsum2</li>
+            </ul>
+          </li>
+
+          <li class="depth1">lorem1-5
+            <ul class="dep2">
+              <li class="depth2">ipsum1-3-2
+                <ul class="dep3">
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                </ul>
+              </li>
+              <li class="depth2">ipsum2</li>
+              <li class="depth2">ipsum2</li>
+              <li class="depth2">ipsum2</li>
+            </ul>
+          </li>
+
+          <li class="depth1">매거진</li>
+
+          <li class="depth1">lorem1-7
+            <ul class="dep2">
+              <li class="depth2">ipsum1-3-2
+                <ul class="dep3">
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                  <li class="depth3">ipsum1-3-3</li><li class="depth3">ipsum1-3-3</li>
+                </ul>
+              </li>
+              <li class="depth2">ipsum2</li>
+              <li class="depth2">ipsum2</li>
+              <li class="depth2">ipsum2</li>
+            </ul>
+          </li>
+        </ul>
+        <div class="w100" aria-hidden="true"></div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- 배너 -->
+  <section class="hero">
+    <div class="swiper horizontals">
+      <div class="prev_box">
+        <img src="img/banner01.png" alt="배너 썸네일1" class="prev01"/>
+        <img src="img/banner02.jpg" alt="배너 썸네일2" class="prev02"/>
+        <img src="img/banner03.jpg" alt="배너 썸네일3" class="prev03"/>
+      </div>
+
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="img/banner01.png" alt="배너1" class="banner-anim" />
+          <img src="img/banner02.jpg" alt="배너2" class="banner-anim" />
+          <img src="img/banner03.jpg" alt="배너3" class="banner-anim" />
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+
+  <!-- 메인 -->
+  <main class="main-container">
+    <!-- 쇼핑 뉴스 -->
+    <section class="shopping_now">
+      <h2 class="title" aria-label="쇼핑 뉴스"></h2>
+      <p class="desc"></p>
+      <div class="more-info-style"></div>
+    </section>
+
+    <!-- 신세계 나우 -->
+    <section class="shin_now">
+      <div class="gal-swiper">
+        <div class="image-box"></div>
+        <div class="image-box-3"></div>
+        <div class="image-box-4"></div>
+        <div class="image-box-5"></div>
+      </div>
+      <div class="desc-6"></div>
+      <div class="desc-7"></div>
+      <div class="sns-icons"></div>
+    </section>
+
+    <!-- 아트 & 컬쳐 -->
+    <section class="art_culture">
+      <h2 class="title"></h2>
+      <div class="art_box">
+        <div class="playbox"></div>
+        <div class="image"></div>
+        <div class="imageboc"></div>
+        <div class="image-8"></div>
+        <div class="imagebox"></div>
+        <div class="image-9"></div>
+      </div>
+    </section>
+
+    <!-- 신세계 브랜드 -->
+    <section class="brand">
+      <h2 class="titile-a"></h2>
+      <div class="action-bar"></div>
+      <div class="gallery-box"></div>
+      <div class="more-info-style-b"></div>
+    </section>
+
+    <!-- 매거진 -->
+    <section class="magazin">
+      <h2 class="title-c"></h2>
+      <div class="magazin-box"></div>
+      <div class="more-info-style-b"></div>
+    </section>
+  </main>
+
+</body>
+</html>
