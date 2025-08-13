@@ -1,10 +1,16 @@
 
+html {
+  font-size: 62.5%; /* 16px × 0.625 = 10px */
+}
 
-*{
+
+body {
     margin : 0 ; 
     padding : 0 ; 
- /*   border: 1px solid #c22a37;   */   
- }   
+   font-size: 1.6rem ; 
+  }
+ 
+    
 
 
    @import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
@@ -13,91 +19,75 @@
 
 
 .header-wrap {
-  position: relative;
-  width: 100% ; 
+ position: relative;
+ width: 100% ; 
  height : 114px ; 
 }
 
-.header-container {
-  display: grid;
-grid-template-columns: minmax(200px, 0.179fr) minmax(800px, 0.64fr) minmax(122px,0.12fr);
-  grid-template-rows: 44px 70px;
-  width : 100% ; 
-  max-width: 1120px; 
-  height: 114px;   
+.header-container {   
+  display: flex;
+ width : 1920px ;    
+  height: 70px;   
   margin : auto ; 
-/*    border: 1px solid #c22a37;     */    
-}
+  box-sizing: border-box;
+  border: 1px solid #c22a37;         
+}  
 
 
-
-
-.util { 
-  grid-column: 1/5; 
-  grid-row: 1/2;
-  height: 44px;  
-/*    border: 1px solid #a61d1d;     */
+.util {
+  margin : auto ; 
+  width : 100% ; 
+  max-width : 1920px ;     
+  height: 44px;    
+    border: 1px solid #a61d1d;     
   box-sizing: border-box;       
 }   
 
 
-.nav_bar {
-grid-column: 2/3 ;
-grid-row: 2/3 ; 
-height: 70px;  
-/* border: 2px solid #df2424;   */
-line-height: 48px; 
-align-items: end;
-padding-top: 24px ; 
-margin-left : 80px ; 
-}  
-
-
-.login { 
-  grid-column: 3/4;
-  grid-row: 2/3; 
-/* border: 1px solid #d42929;     */
-  padding : 32px ; 
-}  
-
 .ci { 
-grid-row: 2/3; 
-grid-column: 1/2 ;
+width : 200px ; 
 height : 70px ; 
-/* border: 1px solid #d42929;      */
-padding-bottom: 0 ;
+border: 1px solid #d42929;      
+box-sizing: border-box;
+margin-right: 0;
 }
 
 .ci img{
-  width : 180px ; 
+  width : 100% ; 
   height : auto ; 
-padding-top: 34px ; 
-
+  padding-top : 36px ;  
 }
+ 
 
-.login .log{
+.nav_bar {  
+position : relative; 
+width: 1520px ; 
+height: 70px;  
+border: 2px solid #df2424;   
+}   
+
+ul.dep1 {
   display : flex ; 
-  flex-direction: column;
-  font-size: 14px;
-}
+  position : relative ;      
+  width : 900px ;      
+  margin : auto ; 
+  padding-top : 22px ;   
+  line-height: 48px ; 
+}  
 
-.login .log li:nth-child(2) {
-  background-image: url(img/Search.png) ; 
-}
+
+.login {   
+  height : 70px ;
+  width : 200px ; 
+  margin-right: 0 ;
+  margin-left : auto ;  
+  box-sizing: border-box;  
+  border: 2px solid #df2424; 
+  padding-top : 34px;  
+  text-align: center;
+}   
 
 
-img {
-  height : 100%  ; 
-  width : auto ; 
-}
-
-h3{
-  font-size: 14px;
-}
-
-.nav_bar .ul{
-  font-size : 14px ;  
-}
 
 ul{
   list-style: none; 
@@ -106,86 +96,39 @@ ul{
 }  
 
 
-ul.dep1 {
-  display : flex ; 
-  position : relative ;   
-  color : black ; 
-  width : 700px ;    
-  z-index: 10000;
-} 
-
-
-.depth1, .depth2, .depth3, dl, dd {
-  font-size: 14px ;
-  }
-
-
 ul.dep1>li.depth1 {
   position : relative ; 
-  width : 110px ;  
-  font-size : 16px ;    
-}      
+  width : 110px ;     
+}    
+
+
 
 ul.dep2 {
   display: flex;
   position: relative ;          
-  width: 830px;
+  width: 900px ; 
 line-height: 36px ;  
-  color : rgb(26, 25, 25) ;     
-}
+  color : rgb(26, 25, 25) ;      
+  z-index : 100 ; 
+  border : 1px red solid ;  
+}      
 
-
-ul.dep2 > li.depth2 {
-line-height: 36px ;
-  font-size: 16px; 
-  position: relative; /* dep3의 기준점 */          
+ul.dep2 > li.depth2 { 
+  width : 320px ;     
+  font-size: 1.4rem; 
+  position: relative; /* dep3의 기준점 */       
 } 
 
-ul.dep2 > li.depth2:nth-child(1) {
-  width : 320px ; 
-}
 
-ul.dep2 > li.depth2:nth-child(2) {
-  width : 300px ;   
-}
+.depth3>ul {
+    display : flex ;   
+} 
 
-ul.dep2 > li.depth2:nth-child(3) {
-  width : 250px ;    
-  text-align: center;
-}
-
-ul.dep2 > li.depth2:nth-child(4) {
-  width : 200px ;   
-  text-align: center;
-}
+.depth3>ul > li {
+    width : 140px ;  
+}  
 
 
-
-ul.dep3 {
-  display: flex ;  
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 300px; 
-
-  padding: 0;
-  margin : 0 12px 0 0 ; }  
-
-
-
-
-dl {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 0 ; 
-  margin: 0;
-  padding: 0 ; 
-  max-width : 260px ; 
-}
-
-dl, dd{
-  gap : 0 0 ; 
-}
 
 ul.dep2,
 ul.dep3 {
@@ -193,39 +136,27 @@ ul.dep3 {
 }
 
 
-
- ul.dep3 > li.depth3 {
-  height: 40px;
-  display: flex; 
-  line-height: 20px;   
-  font-size: 16px; 
-  color: black  ; }
-
-
-
-
-
 .w100 {
   position: fixed;
   left: 50%;
-  top: 114px; /* nav_bar 하단에 맞게 조정 */
-  width: 100vw;
+  top: 114px ; 
+  width : 100% ;  
   height: 0;
-  background: #b2d1b9;
-  z-index: 1000 ; 
+  background: #ffffff ;
+  z-index : 10 ; 
   transition: height 0.3s;
-  transform: translateX(-50%);  
+  transform: translateX(-50%);    
+  box-shadow: 0px 2px 2px 0px #999; 
 }
+
 
 ul.dep2, ul.dep3 { display: none; }
 ul.dep1 > li.depth1:hover > ul.dep2 { display: flex; }
-ul.dep1 > li.depth1:hover ul.dep3 { display: flex; flex-direction: column; }
+ul.dep1 > li.depth1:hover ul.dep3 { display: flex; flex-direction: column; } 
 
 ul.dep1:hover ~ .w100,
 ul.dep1:focus-within ~ .w100 {
-  height: 400px; /* 원하는 드롭다운 높이 */ 
-}
-
+  height: 400px; } /* 원하는 드롭다운 높이 */ 
 
 
 
@@ -238,8 +169,8 @@ ul.dep1:focus-within ~ .w100 {
       max-width : 2100px ;      
       height : 1080px ;  
       margin: auto ;
-      padding-top : 70px ;    
-          
+      padding-top : 70px ;      
+      z-index : -1 ;          
 
     } 
 
@@ -268,12 +199,7 @@ ul.dep1:focus-within ~ .w100 {
 
  
 
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;    
-      justify-content: center;
-      align-items: center; 
-    }
+  
 
 
 
@@ -597,7 +523,6 @@ ul.dep1:focus-within ~ .w100 {
   border: 2px solid #bc1d1d;
   z-index: 37; 
 }
-
 
 
 
