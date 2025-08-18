@@ -30,25 +30,44 @@ body {
  width : 1920px ;    
   height: 70px;   
   margin : auto ; 
-  box-sizing: border-box;
-  border: 1px solid #c22a37;         
+  box-sizing: border-box;    
 }  
 
 
-.util {
+.util  {
   margin : auto ; 
   width : 100% ; 
   max-width : 1920px ;     
-  height: 44px;    
-    border: 1px solid #a61d1d;     
-  box-sizing: border-box;       
+  height: 44px;       
+  text-align: right ;    
+    display: flex;
+  justify-content: flex-end; /* 오른쪽 끝으로 이동 */
+  align-items: center;       /* 세로 가운데 정렬 */
 }   
+
+.lang-links {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* 링크 사이 간격 */  
+} 
+
+.lang-links  a {
+  text-decoration: none;  
+  color : #555 ;  
+}
+
+.lang-links .divider {
+  color: #ccc; /* 회색 느낌 */
+  margin: 0 8px;  
+}
+
+
 
 
 .ci { 
 width : 200px ; 
-height : 70px ; 
-border: 1px solid #d42929;      
+height : 70px ;     
 box-sizing: border-box;
 margin-right: 0;
 }
@@ -64,7 +83,6 @@ margin-right: 0;
 position : relative; 
 width: 1520px ; 
 height: 70px;  
-border: 2px solid #df2424;   
 }   
 
 ul.dep1 {
@@ -76,23 +94,68 @@ ul.dep1 {
   line-height: 48px ; 
 }  
 
+.login {
+  width: 180px;
+  height: 70px;
+}
 
-.login {   
-  height : 70px ;
-  width : 200px ; 
-  margin-right: 0 ;
-  margin-left : auto ;  
-  box-sizing: border-box;  
-  border: 2px solid #df2424; 
-  padding-top : 34px;  
-  text-align: center;
-}   
+.login ul {
+  display: flex;
+  justify-content: space-between; /* 좌-우 끝 배치 */
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+
+/* 로그인 (왼쪽) */
+.login-item {
+  display: flex;
+  align-items: center; 
+  padding-top: 20px ; 
+}
+
+.login-item a {
+  text-decoration: none ; 
+  color : #555 ; 
+}
 
 
 
-ul{
+.login-item::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+  background: url("../img/logcon.png") no-repeat center / contain;
+}
+
+/* 검색 아이콘 (오른쪽, a 태그 클릭 가능) */
+
+.search-item{
+  padding-top: 24px ;
+}
+
+.search-item a {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url("../img/search_h12.png") no-repeat center / contain;
+  text-indent: -9999px; /* 텍스트 숨김 (접근성 필요 시 aria-label 사용 권장) */ 
+  }
+
+  .search-item img{
+    width : 18px ; 
+    height : 18px ; 
+  }
+
+
+.nav_bar ul{
   list-style: none; 
-  color : #000 ;  
+  color : #555 ; 
   padding-left : 0 ;     
 }  
 
@@ -111,7 +174,6 @@ ul.dep2 {
 line-height: 36px ;  
   color : rgb(26, 25, 25) ;      
   z-index : 100 ; 
-  border : 1px red solid ;  
 }      
 
 ul.dep2 > li.depth2 { 
@@ -199,15 +261,15 @@ ul.dep1:focus-within ~ .w100 {
 
 
  
-   .side_info {
+  .side_info {
   display: none;                 /* 처음엔 숨김 */
   position: absolute;
   top: 0;
   right: 0;
   width : 100%;
-  max-width: 400px;
+  max-width: 600px;
   height: 1080px;
-  background-color: yellow;
+  background-color: #2d2d2d ; 
   z-index: 10000;
   opacity: 0;
   transform: translateX(100%);
@@ -219,16 +281,46 @@ ul.dep1:focus-within ~ .w100 {
   opacity: 1;
 }
 
+
+.mini_box { 
+  position: absolute; 
+  width : 100% ; 
+  max-width: 200px ; 
+  height: 200px; 
+  bottom: 0; 
+  right: 0; 
+  background-color: #2d2d2d ; 
+  z-index: 20000; 
+  opacity: 1; 
+  cursor: pointer; }
+
+
+.chatbot{
+  position : fixed ; 
+  width : 100px ; 
+  height : 100px ;         
+  transform: translateY(-100px);   
+  transform: translateX(-50px);     
+  z-index: 30000;   
+}
+
+.chatbot img { 
+  width : 100% ; 
+  height : 100% ;    
+}
+
+
 .hook {
   display: none;                 /* 처음엔 숨김 */
   position: absolute;
   width : 100%;
-  max-width: 300px;
-  height : 300px;
-  left : 1350px;
+  max-width: 200px;
+  height: auto ; 
+  min-height: 100px ;
+  left : 1200px;
   top : 400px;
-  z-index : 20000;
-  background-color: blue;
+  z-index : 30000;
+  background-color: #e6e3e3 ;   
   transform: translateY(-50%) translateX(100%);
   transition: transform 0.5s ease, opacity 0.5s ease;
   opacity: 0;
@@ -236,11 +328,7 @@ ul.dep1:focus-within ~ .w100 {
 
 .hook.open {
   transform: translateY(-50%) translateX(0);
-  opacity: 1;
-}
-
-
-.mini_box { position: absolute; width : 100% ; max-width: 300px ; height: 300px; bottom: 0; right: 0; background-color: brown; z-index: 20000; opacity: 1; cursor: pointer; }
+  opacity: 1;  }
 
 
 
@@ -251,15 +339,11 @@ ul.dep1:focus-within ~ .w100 {
   right: 10px;
   background: transparent;
   border: none;
-  font-size: 20px;
+  font-size: 36px;
   cursor: pointer;
   z-index: 10001;
+  color : white ; 
 }
-
-
-
-
-
 
 
 
@@ -552,82 +636,77 @@ border : 1px red solid ;
 .brand{
   width: 100%;
   max-width: 1920px;
+  height : auto ; 
   margin-top: 180px ; 
   margin-right : auto ; 
   margin-left : auto ; 
   border: 1px solid red; /* 개발 확인용: 필요 없으면 제거 */
   padding-top: 30px;        
-}   
+}     
 
 
-
-
- /* 컨테이너 */
-.action_bar { 
+.action_bar{
   width : 100% ; 
-  max-width: 1280px; 
-  height : 80px ; 
-  margin : auto ;   
-  margin-top: 60px ;  
+  max-width : 1920px ; 
+  height : auto ; 
+  margin : auto ;  
+  border: 1px solid red ; 
 }
 
-/* 슬라이드 트랙을 감싸는 레일 */
-.brand-rail { 
-  position: relative; 
-  width: 1280px; 
-  height: 80px;                /* 전체 높이 80px */ 
-  margin: auto;
-  overflow: hidden;           /* 안전 */ 
+ 
+  
+
+
+
+.logo-rail {
+  position: relative;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  height: 80px; /* 로고 최대 높이에 맞춤 */ 
+    border: 1px solid red ; 
 }
 
-/* Slick 트랙 */
-.slider { 
-  width: 1280px; 
-  height: 80px;     
-  margin: auto ;          /* 슬라이더 높이 60px */  
-}
-
-/* 개별 슬라이드(로고) */
-.slider .slide {
-  display: flex; 
-  align-items: center; 
+.inline-slick .slide {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  height: 100%;
-}
-.slider .slide img { 
-  display: block; 
-  height: auto ;           /* 세로 최대 60px */
-  max-width : 420px ;             /* 비율 유지 */
+  padding: 0 8px;
+  box-sizing: border-box; 
+   border: 1px solid red ; 
 }
 
+.inline-slick .slide img {
+  display: block;
+  height: auto;
+  max-height: 80px; /* 요청: 최대값만 제한 */
+  max-width: 440px;
+   border: 1px solid red ; 
+}
 
-/* 로고 사이 작은 화살표 공통 */
+/* Slick 기본 화살표 숨김 */
+.slick-prev, .slick-next { display: none !important; }   
+
+/* 커스텀 화살표 */
 .inline-arrow {
-  position: absolute; 
-   top: 80%;  
+  position: absolute;
+  top: 50%;
   transform: translateY(-50%);
-  width: 40px; 
-  height: 40px; 
-  padding: 0; 
-  border: 0; 
-  background: transparent; 
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  background: transparent;
   cursor: pointer;
-  z-index: 10;   
+  z-index: 20;
 }
+.inline-arrow img { width: 100%; height: 100%; display: block; }  
 
-.inline-arrow img { 
-  width: 40px; 
-  height: 40px; 
-  display: block;   
-}
+.inline-slick .slick-list{ position:relative; z-index:-1; }
 
-/* 중앙에 정확히 배치(1280px을 3등분한 경계선에서 아이콘 절반만큼 보정) */
-.inline-arrow.arrow-1 { left: calc(1280px / 3 - 10px); }      
-.inline-arrow.arrow-2 { left: calc(1280px * 2 / 3 - 10px); }  
-
-
-
-
+/* 3등분 지점에 배치 */
+.inline-arrow.arrow-1 { left: calc(33.333% - 30px); }
+.inline-arrow.arrow-2 { left: calc(66.666% - 30px); }  
 
 
 

@@ -5,17 +5,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
   <title>신세계 백화점 - 클론 코딩 </title>
-  <link rel="stylesheet" href="css/index.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>  
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="css/index.css">
 
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-  
-<script src="script/script.js"></script>
+<!-- Slick -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+
+<!-- Optional: Swiper/GSAP (다른 영역에서 쓸 거면 유지) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- jQuery → Slick (중요: 순서) -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
+
+
+
 </head>
 
 
@@ -25,19 +32,19 @@
     
     <!-- 헤더  -->
     <div class="header-wrap"> 
-       <div class="util">
-            <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
+       <div class="util lang-links">
+  <a href="#">KR</a>
+  <a href="#">EN</a>
+  <a href="#">CN</a>
+  <span class="divider">|</span>
+  <a href="#">SSG.COM</a>
           </div>  <!-- 유틸  -->  
          
         <div class="header-container">          
                
           <div class="ci">
-                <img src="img/gnb_logo.png" alt="로고"></div>                   
-                     
+                <img src="img/gnb_logo.png" alt="로고"></div>                  
+                 
                   
              
            
@@ -48,7 +55,7 @@
     <li class="depth1">점포안내
       <ul class="dep2">
 
-        <!-- 신세계 백화점 -->
+        <!-- 신세계 백화점 -->   
         <li class="depth2">
           <h3>신세계 백화점</h3>
           <ul class="dep3">
@@ -225,8 +232,14 @@
 
            
                   
-               <div class="login">    
-                <span>로그인    </span>          
+<div class="login">
+  <ul>
+    <li class="login-item"><a href="#"><span>로그인</span></a></li>
+    <li class="search-item"><img src="img/search_h12.png" alt="검색"></li>
+  </ul>
+</div> 
+          
+                     
                </div>    <!-- 로그인  -->
       
           </div>  <!-- 헤더 컨테이터 끝 -->
@@ -259,10 +272,21 @@
      
 </div>
      <div class="side_info open">   
-          <button class="close_btn">✖</button>                   
+          <button class="close_btn">X
+         
+            
+          </button>    
+          
+          
   
      </div>
-       <div class="mini_box">df fg</div>  
+       
+    
+       <div class="mini_box">
+         <div class="chatbot"><a href="#"><img src="img/icon-sbot.png" alt="챗봇"></a></div>
+         <p>jkljl</p>
+
+
        <div class="hook open">yjh gjg</div>            
 
 
@@ -323,32 +347,28 @@
       <!-- 신세계 브랜드  -->
       <div class="brand">
         <div class="title_a"><span class="eng_title_01">#Shinsegae Brand </span></div>
-  <div class="action_bar">
-  <div class="brand-rail">
 
-    <!-- Slick 슬라이더 -->
-    <div id="brandSlider" class="slider">
-      <div class="slide">
-        <a href="#"><img src="img/boon.png" alt="boon"></a>
-      </div>
-      <div class="slide">
-        <a href="#"><img src="img/adir.png" alt="adir"></a> 
-      </div>
-      <div class="slide">
-        <a href="#"><img src="img/via.png" alt="via"></a>
-      </div>
+
+  <div class="logo-rail">
+    <div class="inline-slick">
+      <div class="slide"><img src="img/boon.png"  alt="BOONTHESHOP"></div>
+      <div class="slide"><img src="img/adir.png"  alt="Addir"></div>
+      <div class="slide"><img src="img/via.png"   alt="VIA SHINSEGAE"></div>
     </div>
-
-    <!-- 로고 사이 작은 화살표 -->
-    <button type="button" class="inline-arrow arrow-1" aria-label="다음">
-      <img src="img/arrow_right.png" alt="">
+  
+    <!-- 커스텀 화살표 -->
+    <button type="button" class="inline-arrow arrow-1" aria-label="이전">
+      <img src="img/backarrow.png" alt="이전">
     </button>
     <button type="button" class="inline-arrow arrow-2" aria-label="다음">
-      <img src="img/arrow_right.png" alt="">
-    </button>  
-
+      <img src="img/forwardarrow.png" alt="다음">
+    </button>
   </div>
-</div>  <!-- 액션 바  -->
+
+
+
+
+
 
            <!--  브랜드 갤러리 -->
           <div class="gallery-box">
@@ -541,12 +561,9 @@
 
 
   
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  
 
 
-
+<script src="script/script.js"></script>  
  
 
   </body>

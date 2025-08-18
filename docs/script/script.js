@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   // ------ 설정값 ------
   // 반응형을 원하면 imgWidth = banner.offsetWidth 로 두세요.
-  const banner = document.querySelector('.swiper-wrapper');
+  const banner = document.querySelector('.swiper');
   const getImgWidth = () => banner ? banner.offsetWidth : 1920;
   let imgWidth = getImgWidth();
 
@@ -350,58 +350,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // jQuery & Slick 필요
-$(function() {
+// script/script.js
+document.addEventListener('DOMContentLoaded', function () {
+  var $slider = $('.inline-slick');
+
   // Slick 초기화
-  $('#brandSlider').slick({
-    slidesToShow: 3,          // 한 줄에 3개
-    slidesToScroll: 1,        // 한 칸씩 이동
-    infinite: true,
-    arrows: false,            // 기본 화살표는 숨김(커스텀 사용)
-    draggable: false,         // 필요하면 true
-    swipe: false              // 필요하면 true
+  $slider.slick({
+    arrows: false,     // 기본 화살표 숨김
+    dots: false,
+    infinite: true,    // 무한 루프
+    speed: 300,
+    slidesToShow: 3,   // 항상 3개 고정
+    slidesToScroll: 1  // 한 칸씩
   });
 
-  // 로고 사이 화살표 클릭 시 한 칸 앞으로
-  $('.inline-arrow').on('click', function() {
-    $('#brandSlider').slick('slickNext');
+  // 커스텀 화살표
+  $('.arrow-1').on('click', function (e) {
+    e.preventDefault();
+    $slider.slick('slickNext');
   });
-});  
-
-
-
-
-// 매거진 
-
-document.addEventListener('DOMContentLoaded', function() {
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.from('.magazin .title_a',   {
-    y: 30,
-    opacity: 0,
-    ease: "power3.out",
-    duration: 2,        
-    stagger: 1, //  1. 순차적으로 실행  0. 동시 
-    scrollTrigger: {
-      trigger: '.magazin',
-      start: 'top 80%',
-      toggleActions: 'play none none none'  
-    }
+  $('.arrow-2').on('click', function (e) {
+    e.preventDefault();
+    $slider.slick('slickPrev');
   });
-});  
-  
-document.addEventListener('DOMContentLoaded', function() {
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.from('.mega_box .mega_01, .mega_box .mega_02, .mega_box .mega_03, .mega_box .mega_04', {
-    y: 50,
-    opacity: 0,
-    ease: "power3.out",
-    duration: 2,        
-    stagger: 0.5, //  1. 순차적으로 실행  0. 동시 
-    scrollTrigger: {
-      trigger: '.mega_box',
-      start: 'top 80%',
-      toggleActions: 'play none none none'  
-    }
-  }); 
 });
-
  
