@@ -375,3 +375,62 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
  
+
+document.addEventListener('DOMContentLoaded', () => {
+  const root  = document.querySelector('.swiper.horizontals');
+  if (!root) return; // 안전 가드
+
+  const mini  = root.querySelector('.mini_box');
+  const side  = root.querySelector('.side_info');
+  const hook  = root.querySelector('.hook');
+  const close = root.querySelector('.close_btn');
+
+  // ── Swiper 초기화 (있을 때만). root를 직접 넘겨 중복 초기화 방지
+  let swiper = null;
+  if (window.Swiper) {
+    swiper = new Swiper(root, {
+      // ★ 필요 옵션 채우세요
+      direction: 'horizontal',
+      loop: true,
+      slidesPerView: 1,
+      pagination: { el: root.querySelector('.swiper-pagination'), clickable: true }
+    });
+  }
+
+  // ── 로딩 직후 mini_box는 보여두기(스타일 충돌 대비)
+  if (mini) mini.style.display = 'block';
+
+  // ── 열고/닫기
+  const openPanel = () => {
+    root.classList.add('is-open');
+    if (side) side.setAttribute('aria-hidden', 'false');
+    if (hook) hook.setAttribute('aria-hidden', 'false');
+  };
+
+  const closePanel = () => {
+    root.classList.remove('is-open');
+    if (side) side.setAttribute('aria-hidden', 'true');
+    if (hook) hook.setAttribute('aria-hidden', 'true');
+    if (mini) mini.focus(); // 접근성: 포커스 복귀
+  };
+
+  // ── 이벤트 바인딩
+  if (mini) {
+    mini.addEventListener('click', (e) => { e.preventDefault(); openPanel(); });
+    mini.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPanel(); }
+    });
+  }
+  if (close) {
+    close.addEventListener('click', (e) => { e.preventDefault(); closePanel(); });
+  }
+
+  // (선택) 패널 바깥 클릭 시 닫기
+  // document.addEventListener('click', (e) => {
+  //   const within = (side && side.contains(e.target)) ||
+  //                  (mini && mini.contains(e.target)) ||
+  //                  (hook && hook.contains(e.target));
+  //   if (!within) closePanel();
+  // });
+});
+

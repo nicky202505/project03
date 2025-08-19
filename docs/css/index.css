@@ -1,3 +1,5 @@
+@import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
+
 
 html {
   font-size: 62.5%; /* 16px × 0.625 = 10px */
@@ -11,10 +13,13 @@ body {
 /*    border: 1px solid red ;  */
   }
  
+  li{
+    list-style: none;
+  }
     
 
 
-   @import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
+
 
 
 
@@ -226,14 +231,12 @@ ul.dep1:focus-within ~ .w100 {
 
 
 
-     .swiper { 
-      position: absolute;
+     .swiper {  
       width : 100% ;       
       max-width : 2100px ;      
       height : 1080px ;  
       margin: auto ;
-      padding-top : 70px ;      
-      z-index : -1 ;          
+      padding-top : 70px ;               
 
     } 
 
@@ -260,95 +263,117 @@ ul.dep1:focus-within ~ .w100 {
     }
 
 
- 
-  .side_info {
-  display: none;                 /* 처음엔 숨김 */
+ /* 배너 컨테이너가 기준점이 되도록 */
+.swiper.horizontals { position: relative; }
+
+
+
+
+
+/* 배너 컨테이너가 기준점이 되도록 */
+.swiper.horizontals { position: relative; }
+
+/* 미니 박스: 최초 노출 */
+.mini_box {
   position: absolute;
-  top: 0;
-  right: 0;
-  width : 100%;
-  max-width: 600px;
-  height: 1080px;
-  background-color: #2d2d2d ; 
-  z-index: 10000;
-  opacity: 0;
-  transform: translateX(100%);
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  right: 16px;
+  bottom: 16px;
+  z-index: 9999;             /* 슬라이드 위 */
+  cursor: pointer;
+  user-select: none;   
+  background-color: #a13939;  
+  width : 200px  ; 
+  height : 200px  ;   
+} 
+
+.mini_box{
+  position:absolute; right:16px; bottom:16px;
+  z-index:9999; cursor:pointer;
+  opacity:1; visibility:visible;
+  transition: opacity .2s ease, visibility .2s ease;
 }
 
-.side_info.open {
+/* 패널 열림 상태: mini_box 가리기 */
+.swiper.horizontals.is-open .mini_box{
+  opacity:0; visibility:hidden; pointer-events:none;
+}
+
+.chatbot { 
+  position: relative ; 
+  width: 80px;
+  height: 80px;  
+  transform: translate(80%, -120%);
+  z-index: 10000;
+}
+
+.chatbot img {
+  width: 100% ; 
+  height: 100% ; 
+}
+
+/* 사이드 인포: 초기는 화면 밖(오른쪽) */
+.side_info {
+  position: absolute;
+  top: 16px;
+  right: 2px;
+  width: 500px  ; 
+  height : 1060px ; 
+  z-index: 9997;
+  transform: translateX(110%);
+  opacity: 0;
+  transition: transform .35s ease, opacity .35s ease;
+  /* 예시 배경/레이어 */
+  background: #614848;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  border-radius: 4px;
+  padding: 16px; 
+}
+
+/* 후크: 패널 옆에 딸려 나오는 장식 요소 */
+.hook {
+  position: relative;
+  top: 16px;
+  right: 550px ;   
+  width: 200px;             /* 모양에 맞게 수정 */
+  height: 200px;
+  z-index: 10000;
+  transform: translateY(300%); 
+  transition: transform .35s ease;  
+  /* 예시 스타일 */
+  background: #eee;
+  border-radius: 6px 0 0 6px;  
+}
+
+/* 닫혀 있을 때는 포인터 막기 (스와이프 방해 방지) */
+.side_info[aria-hidden="true"],
+.hook[aria-hidden="true"] {
+  pointer-events: none;
+}
+
+/* 열림 상태 */
+.swiper.horizontals.is-open .side_info {
   transform: translateX(0);
   opacity: 1;
 }
-
-
-.mini_box { 
-  position: absolute; 
-  width : 100% ; 
-  max-width: 200px ; 
-  height: 200px; 
-  bottom: 0; 
-  right: 0; 
-  background-color: #2d2d2d ; 
-  z-index: 20000; 
-  opacity: 1; 
-  cursor: pointer; }
-
-
-.chatbot{
-  position : fixed ; 
-  width : 100px ; 
-  height : 100px ;         
-  transform: translateY(-100px);   
-  transform: translateX(-50px);     
-  z-index: 30000;   
+.swiper.horizontals.is-open .hook {
+  transform: translateX(0);
 }
 
-.chatbot img { 
-  width : 100% ; 
-  height : 100% ;    
-}
-
-
-.hook {
-  display: none;                 /* 처음엔 숨김 */
-  position: absolute;
-  width : 100%;
-  max-width: 200px;
-  height: auto ; 
-  min-height: 100px ;
-  left : 1200px;
-  top : 400px;
-  z-index : 30000;
-  background-color: #e6e3e3 ;   
-  transform: translateY(-50%) translateX(100%);
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  opacity: 0;
-}
-
-.hook.open {
-  transform: translateY(-50%) translateX(0);
-  opacity: 1;  }
-
-
-
-/* 닫기 버튼 스타일 */
+/* 닫기 버튼 예시 */
 .close_btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  font-size: 36px;
+  appearance: none;
+  border: 0;
+  background: #222;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 50%;
   cursor: pointer;
-  z-index: 10001;
-  color : white ; 
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
-
-
-
-
-
 
 
 
