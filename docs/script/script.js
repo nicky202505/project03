@@ -349,32 +349,71 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+
+
 // jQuery & Slick 필요
-// script/script.js
-document.addEventListener('DOMContentLoaded', function () {
-  var $slider = $('.inline-slick');
+// script/script.js  
 
-  // Slick 초기화
-  $slider.slick({
-    arrows: false,     // 기본 화살표 숨김
-    dots: false,
-    infinite: true,    // 무한 루프
+$(function(){
+  const $track = $('.inline-slick');
+
+  // 중복 초기화 방지
+  if ($track.hasClass('slick-initialized')) $track.slick('unslick');
+
+  $track.slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    infinite: false,
     speed: 300,
-    slidesToShow: 3,   // 항상 3개 고정
-    slidesToScroll: 1  // 한 칸씩
+    arrows: true,
+    prevArrow: $('.mid-arrow.prev'),
+    nextArrow: $('.mid-arrow.next'),
+    // 필요하면 반응형 추가
+    responsive: [
+      { breakpoint: 992, settings: { slidesToShow: 3 } },
+      { breakpoint: 640, settings: { slidesToShow: 2 } }
+    ]
   });
 
-  // 커스텀 화살표
-  $('.arrow-1').on('click', function (e) {
-    e.preventDefault();
-    $slider.slick('slickNext');
-  });
-  $('.arrow-2').on('click', function (e) {
-    e.preventDefault();
-    $slider.slick('slickPrev');
-  });
+  // 부모 너비가 0이었다가 표시되는 경우 대비
+  setTimeout(()=> $track.slick('setPosition'), 0);  
 });
  
+
+// 매거진 
+
+document.addEventListener('DOMContentLoaded', function() {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from('.magazin .title_a',   {
+    y: 30,
+    opacity: 0,
+    ease: "power3.out",
+    duration: 2,        
+    stagger: 1, //  1. 순차적으로 실행  0. 동시 
+    scrollTrigger: {
+      trigger: '.magazin',
+      start: 'top 80%',
+      toggleActions: 'play none none none'  
+    }
+  });
+});  
+  
+document.addEventListener('DOMContentLoaded', function() {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from('.mega_box .mega_01, .mega_box .mega_02, .mega_box .mega_03, .mega_box .mega_04', {
+    y: 50,
+    opacity: 0,
+    ease: "power3.out",
+    duration: 2,        
+    stagger: 0.5, //  1. 순차적으로 실행  0. 동시 
+    scrollTrigger: {
+      trigger: '.mega_box',
+      start: 'top 80%',
+      toggleActions: 'play none none none'  
+    }
+  }); 
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   const root  = document.querySelector('.swiper.horizontals');

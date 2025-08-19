@@ -5,21 +5,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
   <title>신세계 백화점 - 클론 코딩 </title>
-  <link rel="stylesheet" href="css/index.css">
-
-<!-- Slick -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
-
+  <link rel="stylesheet" href="css/index.css">  
 <!-- Optional: Swiper/GSAP (다른 영역에서 쓸 거면 유지) -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-<!-- jQuery → Slick (중요: 순서) -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
+<!-- jQuery → Slick (중요: 순서) --> 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
 
 
 
@@ -345,21 +340,25 @@
         <div class="title_a"><span class="eng_title_01">#Shinsegae Brand </span></div>
 
 
+
+
+
   <div class="logo-rail">
+    <!-- 슬라이드 트랙 -->
     <div class="inline-slick">
-      <div class="slide"><img src="img/boon.png"  alt="BOONTHESHOP"></div>
-      <div class="slide"><img src="img/adir.png"  alt="Addir"></div>
-      <div class="slide"><img src="img/via.png"   alt="VIA SHINSEGAE"></div>
+      <div class="slide"><img src="img/boon.png" alt="BOONTHESHOP"></div>
+      <div class="slide"><img src="img/adir.png" alt="Addir"></div>
+      <div class="slide"><img src="img/via.png"  alt="VIA SHINSEGAE"></div>
+      <!-- 필요하면 더 추가 -->
     </div>
-  
-    <!-- 커스텀 화살표 -->
-    <button type="button" class="inline-arrow arrow-1" aria-label="이전">
-      <img src="img/backarrow.png" alt="이전">
-    </button>
-    <button type="button" class="inline-arrow arrow-2" aria-label="다음">
-      <img src="img/forwardarrow.png" alt="다음">
-    </button>
+
+    <!-- 가운데에 끼워지는 커스텀 화살표 -->
+    <button type="button" class="mid-arrow prev" aria-label="이전">‹</button>
+    <button type="button" class="mid-arrow next" aria-label="다음">›</button>
   </div>
+</div>   
+
+
 
 
 
@@ -380,7 +379,8 @@
          <div class="media06"><video src="img/media05.mp4" controls autoplay loop muted playsinline ></video></div>          
         </div>      
       <div class="more-info">view more</div> 
-      </div>
+      
+    </div>  <!-- 신세계 브랜드  -->
 
 
       <!-- 매거진  -->
@@ -555,12 +555,11 @@
   </div>
 
 
-
-  
-
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
 
 <script src="script/script.js"></script>  
- 
+  
 
   </body>
 </html>

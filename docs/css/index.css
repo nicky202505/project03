@@ -670,68 +670,63 @@ border : 1px red solid ;
 }     
 
 
-.action_bar{
-  width : 100% ; 
-  max-width : 1920px ; 
-  height : auto ; 
-  margin : auto ;  
-  border: 1px solid red ; 
-}
-
- 
-  
-
-
-
-.logo-rail {
+/* 레일 기본 */
+.logo-rail{
   position: relative;
   max-width: 1280px;
-  width: 100%;
   margin: 0 auto;
-  height: 80px; /* 로고 최대 높이에 맞춤 */ 
-    border: 1px solid red ; 
+  background: #f2f2f2;
+  border: 2px solid #d00; /* 개발 확인용: 필요 없으면 제거 */
 }
 
-.inline-slick .slide {
-  display: flex;
+/* Slick 트랙/슬라이드 */
+.inline-slick .slick-slide{
+  display: flex !important;           /* 수직가운데 정렬용 */
   align-items: center;
   justify-content: center;
-  padding: 0 8px;
-  box-sizing: border-box; 
-   border: 1px solid red ; 
+  height: 60px;                        /* 원하는 높이 */
+  padding: 0 24px;
+  background: #f2f2f2;
+  /* 세로 구분선 느낌 */
+  box-shadow: inset -1px 0 0 rgba(0,0,0,.15), inset 1px 0 0 rgba(0,0,0,.15);
 }
-
-.inline-slick .slide img {
+.inline-slick img{
   display: block;
-  height: auto;
-  max-height: 80px; /* 요청: 최대값만 제한 */
-  max-width: 440px;
-   border: 1px solid red ; 
+  max-height: 28px;                    /* 아이콘 크기 조절 */
+  width: auto;
 }
 
-/* Slick 기본 화살표 숨김 */
-.slick-prev, .slick-next { display: none !important; }   
-
-/* 커스텀 화살표 */
-.inline-arrow {
+/* 가운데 끼워지는 화살표 버튼 */
+.mid-arrow{
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  padding: 0;
+  top: 0;
+  width: 48px;                         /* 화살표 칸 폭 */
+  height: 100%;
+  background: #eee;
   border: 0;
-  background: transparent;
+  font-size: 22px;
+  line-height: 1;
   cursor: pointer;
-  z-index: 20;
+  z-index: 5;
+  /* 세로 구분선 */
+  box-shadow: inset -1px 0 0 rgba(0,0,0,.15), inset 1px 0 0 rgba(0,0,0,.15);
 }
-.inline-arrow img { width: 100%; height: 100%; display: block; }  
 
-.inline-slick .slick-list{ position:relative; z-index:-1; }
+/* 위치: 3칸 그리드 사이에 정확히 들어오게 */
+.mid-arrow.prev{ left: calc(33.333% - 24px); transform: translateX(-50%); }
+.mid-arrow.next{ left: calc(66.666% + 24px); transform: translateX(-50%); }
 
-/* 3등분 지점에 배치 */
-.inline-arrow.arrow-1 { left: calc(33.333% - 30px); }
-.inline-arrow.arrow-2 { left: calc(66.666% - 30px); }  
+/* 접근성 포커스 */
+.mid-arrow:focus{ outline: 2px solid #222; }
+
+/* 반응형(선택): 좁은 폭에서 화살표 조금 줄이기 */
+@media (max-width: 768px){
+  .mid-arrow{ width: 40px; font-size: 18px; }
+  .inline-slick .slick-slide{ padding: 0 16px; }
+  .mid-arrow.prev{ left: calc(33.333% - 16px); }
+  .mid-arrow.next{ left: calc(66.666% + 16px); }
+}
+
 
 
 
