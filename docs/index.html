@@ -12,18 +12,15 @@
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-<!-- jQuery → Slick (중요: 순서) --> 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>   
+
+ </head>  
 
 
 
-</head>
-
-
-
-  </head>
-  <body>  
+   <body>  
     
     <!-- 헤더  -->
     <div class="header-wrap"> 
@@ -38,7 +35,7 @@
         <div class="header-container">          
                
           <div class="ci">
-                <img src="img/gnb_logo.png" alt="로고"></div>                  
+                <img src="img/gnb_logo.png" alt="로고"></div>                    
                  
                   
              
@@ -232,15 +229,14 @@
     <li class="login-item"><a href="#"><span>로그인</span></a></li>
     <li class="search-item"><img src="img/search_h12.png" alt="검색"></li>
   </ul>
-</div> 
+</div>   <!-- 로그인 끝 -->
           
                      
-               </div>    <!-- 로그인  -->
-      
+                     
           </div>  <!-- 헤더 컨테이터 끝 -->
         </div>   <!-- 헤더 랩 끝 --> 
    
-      <!-- 헤더랩 끝 -->
+      
 
   
 
@@ -275,9 +271,9 @@
 
   <div class="mini_box" role="button" tabindex="0" aria-label="사이드 정보 열기">
     <div class="chatbot">
-      <a href="#"><img src="img/icon-sbot.png" alt="챗봇"></a>
+      <img src="img/icon-sbot.png" alt="챗봇">
     </div>
-  </div>
+  </div> 
 
   <div class="hook" aria-hidden="true"></div>   
 
@@ -341,22 +337,20 @@
 
 
 
+<!-- 슬라이드 -->
 
-
-  <div class="logo-rail">
-    <!-- 슬라이드 트랙 -->
-    <div class="inline-slick">
-      <div class="slide"><img src="img/boon.png" alt="BOONTHESHOP"></div>
-      <div class="slide"><img src="img/adir.png" alt="Addir"></div>
-      <div class="slide"><img src="img/via.png"  alt="VIA SHINSEGAE"></div>
-      <!-- 필요하면 더 추가 -->
-    </div>
-
-    <!-- 가운데에 끼워지는 커스텀 화살표 -->
-    <button type="button" class="mid-arrow prev" aria-label="이전">‹</button>
-    <button type="button" class="mid-arrow next" aria-label="다음">›</button>
+<div class="logo-rail">
+  <div class="inline-slick">
+    <div class="slide"><img src="img/boon.png" alt="BOONTHESHOP"></div>
+    <div class="slide"><img src="img/adir.png" alt="Addir"></div>
+    <div class="slide"><img src="img/via.png"  alt="VIA SHINSEGAE"></div>
   </div>
-</div>   
+
+  <!-- 커스텀 화살표 -->
+  <button type="button" class="mid-arrow prev" aria-label="이전">‹</button>
+  <button type="button" class="mid-arrow next" aria-label="다음">›</button>
+</div>    
+
 
 
 
@@ -399,11 +393,9 @@
           <ul class="group02-1"> 
             <li> 
             <a href="#"><img src="img/mega01-1.png" alt="test"></a>  
-            </li>
-            <a href="">
-              <li class="li_title">Buyer's Pick</li> 
-            </a>
-             <li class="li_desc"> 이 여름보다 뜨거운 패션 뷰티 라이프스타일 신제품 컬렉션 </li> 
+            </li>            
+            <li class="li_title"><a href="#">Buyer's Pick</a></li> 
+            <li class="li_desc"> 이 여름보다 뜨거운 패션 뷰티 라이프스타일 신제품 컬렉션 </li> 
           </ul>
              <ul class="group02-2">
             <li>  
@@ -418,27 +410,25 @@
             <li> 
             <a href="#"><img src="img/mega01-3.png" alt="test"></a>  
             </li>
-            <a href="">
-              <li class="li_title">WHAT WE LOVE </li> 
-            </a>
+            
+              <li class="li_title"><a href="#">WHAT WE LOVE</a> </li> 
+            
              <li class="li_desc"> 글로벌 럭셔리 브랜드부터 가장 핫한 신상품까지, 당신의 라이프 스타일에 품격을 더해 줄 7~8월의 리스트 </li>              
           </ul>
           <ul class="group02-4">
             <li> 
             <a href="#"><img src="img/mega01-4.png" alt="test"></a>  
             </li>
-            <a href="">
-              <li class="li_title">Burn into Style</li> 
-            </a>
-             <li class="li_desc"> 작열하는 태양만큼 과감한 스윔웨어 룩으로 이 계절을 온전히 즐기는 법 </li> 
+                          <li class="li_title"><a href="#">Burn into Style</a></li> 
+                        <li class="li_desc"> 작열하는 태양만큼 과감한 스윔웨어 룩으로 이 계절을 온전히 즐기는 법 </li> 
           </ul>
              <ul class="group02-5">
             <li>  
             <a href="#"><img src="img/mega01-5.png" alt="test"></a>  
             </li>
-            <a href="">
-              <li class="li_title">MUST HAVE BEAUTY BUCKET </li> 
-            </a>
+            
+              <li class="li_title"><a href="#">MUST HAVE BEAUTY BUCKET</a> </li> 
+            
              <li class="li_desc"> 햇살이 강렬하고 습도가 높아지는 계절. <br> 
             머리부터 발끝까지 시원하게 리셋해줄 여름 맞춤 머스트 해브 아이템 리스트 </li> 
           </ul>
@@ -452,27 +442,25 @@
             <li>
             <a href="#"><img src="img/mega03-1.png" alt="test"></a>  
             </li>
-            <a href="">
-              <li class="li_title">고전과 현대, 일상과 예술의 도시 팔레르모 </li> 
-            </a>
-             <li class="li_desc"> 팔레르모는 한시대의 모습만으로는 설명되지 않는다. 머무름과 건축, 거리의 창작이라는 4개의 키워드를 통해 이 다층적인 도시를 차근히 들여다본 4일간의 기록 </li> 
+                          <li class="li_title"><a href="">고전과 현대, 일상과 예술의 도시 팔레르모</a> </li> 
+                         <li class="li_desc"> 팔레르모는 한시대의 모습만으로는 설명되지 않는다. 머무름과 건축, 거리의 창작이라는 4개의 키워드를 통해 이 다층적인 도시를 차근히 들여다본 4일간의 기록 </li> 
           </ul>
           <ul class="group03_2 ">
            <li>  
             <a href="#"><img src="img/mega03-2.png" alt="test"></a>  
             </li>
-            <a href="">
-              <li class="li_title">여름 생활 대백서 </li> 
-            </a>
+            
+              <li class="li_title"><a href="#">여름 생활 대백서</a> </li> 
+            
              <li class="li_desc"> 꿉꿉한 공기에 까다로운 관리를 요하는 계절 여름철 생활형 고민에 시원한 해법을 제안하는 리빙 아이템  </li> 
           </ul>
           <ul class="group03_3 ">
           <li> 
             <a href="#"><img src="img/mega03-3.png" alt="test"></a>  
             </li>
-            <a href="">
-              <li class="li_title">완벽한 홈캉스를 위하여</li> 
-            </a>
+            
+              <li class="li_title"><a href="#">완벽한 홈캉스를 위하여</a></li> 
+            
              <li class="li_desc"> 일상 속 숨은 쉼표, 홈캉스. 익숙한 공간에서 누리는 특별한 하루를 만나보자.
  </li> 
           </ul>
@@ -480,19 +468,17 @@
        <li> 
             <a href="#"><img src="img/mega03-4.png" alt="test"></a>  
             </li>
-            <a href="">
-              <li class="li_title">HANG IT, FLEX T!</li> 
-            </a>
-             <li class="li_desc"> 달랑달랑! 작지만 강렬한 존재감으로 시선을 사로잡는, 실용성과 스타일 모두를 만족시킬 패션&뷰티 키 링 아이템.
+                          <li class="li_title"><a href="">HANG IT, FLEX IT</a></li> 
+                         <li class="li_desc"> 달랑달랑! 작지만 강렬한 존재감으로 시선을 사로잡는, 실용성과 스타일 모두를 만족시킬 패션&뷰티 키 링 아이템.
  </li> 
           </ul> 
           <ul class="group03_5 ">
        <li>  
             <a href="#"><img src="img/mega03-5.png" alt="test"></a>  
             </li>
-            <a href="">
-              <li class="li_title">존재의 질서를 기념하는 '매달기'</li> 
-            </a>
+            
+              <li class="li_title"><a href="#">존재의 질서를 기념하는 '매달기'</a></li> 
+            
              <li class="li_desc"> 조각가 박선기를 만났다. 그의 손에 놓인 숯, 석영, 아크릴 비즈 등의 소재가 공중에 모여 입체적 세계를 펼쳐낸다. 보이지 않는 질서와 감각을 감지하게 하는 그의 작품은 ‘공간적 사유 장치’다. </li> 
           </ul> 
 
@@ -503,7 +489,7 @@
             <ul class="group04_1 ">
  <li>  
             <a href="#"><img src="img/mega04-1.png" alt="test"></a>  
-            <a href=""></li>POIRET at VIOLET GREY</li> </a>
+            <li>POIRET at VIOLET GREY</li> 
              <li class="li_desc"> 럭셔리 뷰티 브랜드 뽀아레가 뷰티 편집숍 바이올렛 그레이를 통해 뉴욕에 성공적으로 상륙했다. 뜨거웠던 그날 밤의 론칭 파티 현장부터 뽀아레와 손잡은 바이올렛 그레이 창립자 카산드라 그레이와의 단독 인터뷰까지! 뽀아레의 뉴욕 스토리를 지금 바로 만나보자.
  </li>  
           </ul>
@@ -511,27 +497,27 @@
   <li> 
             <a href="#"><img src="img/mega04-2.png"  alt="test"></a>  
             </li>
-            <a href="">
-              <li class="li_title">특수 채소로 건강 지키기 </li> 
-            </a>
+            
+              <li class="li_title"><a href="">특수 채소로 건강 지키기</a> </li> 
+            
              <li class="li_desc"> 단면과 식감이 이색적인 오크라부터 불그스레한 컬러가 신비하게 젖어든 블러드 오렌지까지, 일상에서 특수 채소를 건강하게 즐기는 레시피를 소개한다. </li> 
           </ul>
           <ul class="group04_3 ">
  <li> 
             <a href="#"><img src="img/mega04-3.png"  alt="test"></a>  
             </li>
-            <a href="">
-              <li class="li_title">GLOW UP FOR SUMMER</li> 
-            </a>
+            
+              <li class="li_title"><a href="#">GLOW UP FOR SUMMER</a></li> 
+            
              <li class="li_desc"> 태양의 열기처럼 대담하게, 혹은 다채로운 컬러로 생기 넘치게! 이번 여름 당신의 추구미는?   </li> 
           </ul>
           <ul class="group04_4 ">
    <li>  
             <a href="#"><img src="img/mega04-4.png" alt="test"></a>  
             </li>
-            <a href="">
-              <li class="li_title">SUMMER BREEZE</li> 
-            </a>
+            
+              <li class="li_title"><a href="#">SUMMER BREEZE</a></li> 
+            
              <li class="li_desc"> 산들거리는 여름 바람 속 마주친 두 소녀. 미지의 여행을 떠나다.</li> 
            </ul>         
                    
@@ -555,9 +541,9 @@
   </div>
 
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="script/script.js"></script>  
   
 

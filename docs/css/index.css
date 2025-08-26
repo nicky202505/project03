@@ -251,7 +251,7 @@ ul.dep1:focus-within ~ .w100 {
  
     .prev_box{
       width : 100% ; 
-        max-width: ;width : 2100px ; 
+        max-width: 2100px ; 
         height : 1080px ;  
         transform: translateX(-180px);   
           position: absolute; 
@@ -614,7 +614,7 @@ border : 1px red solid ;
 
 .artimg7 {
   position: relative;
-  width: 480 px;
+  width: 480px;
   height: 480px;   
   margin-right : 40px ; 
  border: 1px solid #b53434;     
@@ -628,7 +628,7 @@ border : 1px red solid ;
 
 .artimg8 {
   position: relative;
-  width: 480 px;
+  width: 480px;
   height: 480px;   
     margin-right : 40px ; 
     border: 1px solid #b53434;     
@@ -641,9 +641,9 @@ border : 1px red solid ;
 
 .artimg9 {
   position: relative;
-  width: 480 px;
+  width: 480px;
   height: 480px;  
-    margin-right : 40px ;  
+  margin-right : 40px ;  
   border: 1px solid #b53434;     
 }
 
@@ -670,11 +670,13 @@ border : 1px red solid ;
 }     
 
 
-/* 레일 기본 */
+/* 여기부터 슬릭 슬라이드  */
+
 .logo-rail{
   position: relative;
-  max-width: 1280px;
-  margin: 0 auto;
+  width : 100% ; 
+  max-width: 1920px;
+  margin: 60px auto;
   background: #f2f2f2;
   border: 2px solid #d00; /* 개발 확인용: 필요 없으면 제거 */
 }
