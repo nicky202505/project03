@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 여기부터 슬릭 슬라이드 //  
 
-/* $(function(){
+$(function(){
   const $track = $('.inline-slick');
 
   // 중복 초기화 방지
@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 부모 너비가 0이었다가 표시되는 경우 대비
   setTimeout(()=> $track.slick('setPosition'), 0);  
-}); */
+});
  
 
 
