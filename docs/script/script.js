@@ -348,17 +348,18 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+
+
 window.addEventListener('DOMContentLoaded', function(){
   const $rail  = $('.logo-rail');
   const $slick = $rail.find('.inline-slick');
 
   $slick.slick({
     infinite: true,
-    slidesToShow: 3,   // 그대로 유지
+    slidesToShow: 3,
     slidesToScroll: 1,
     speed: 400,
-    autoplay: true,
-    autoplaySpeed: 2000,
+    autoplay: false,          // 자동재생 꺼짐
     arrows: true,
     prevArrow: $rail.find('.prev'),
     nextArrow: $rail.find('.next'),
@@ -368,8 +369,6 @@ window.addEventListener('DOMContentLoaded', function(){
     ]
   });
 });
-
-
 
 
 
