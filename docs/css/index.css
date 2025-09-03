@@ -799,64 +799,57 @@ ul.dep1:focus-within ~ .w100 {
 }     
 
 
-/* 여기부터 슬릭 슬라이드  */
-
+/* 래퍼 */
 .logo-rail{
   position: relative;
-  width : 100% ; 
-  max-width: 1920px;
-  margin: 60px auto;
-  background: #f2f2f2;
-  border: 2px solid #d00; /* 개발 확인용: 필요 없으면 제거 */
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 56px; /* 좌우 화살표 자리 */
+  box-sizing: border-box;
+  overflow: hidden; /* 로고가 밖으로 넘치지 않도록 */
 }
 
-/* Slick 트랙/슬라이드 */
-.inline-slick .slick-slide{
-  display: flex !important;           /* 수직가운데 정렬용 */
-  align-items: center;
-  justify-content: center;
-  height: 60px;                        /* 원하는 높이 */
-  padding: 0 24px;
-  background: #f2f2f2;
-  /* 세로 구분선 느낌 */
-  box-shadow: inset -1px 0 0 rgba(0,0,0,.15), inset 1px 0 0 rgba(0,0,0,.15);
+/* 슬라이드 아이템 */
+.inline-slick .slide{
+  padding: 0 16px;
+  box-sizing: border-box;
 }
-.inline-slick img{
+.inline-slick .slide img{
   display: block;
-  max-height: 28px;                    /* 아이콘 크기 조절 */
+  height: 40px;     /* 필요에 맞게 조정 */
   width: auto;
 }
 
-/* 가운데 끼워지는 화살표 버튼 */
+/* 커스텀 화살표 버튼 */
 .mid-arrow{
   position: absolute;
-  top: 0;
-  width: 48px;                         /* 화살표 칸 폭 */
-  height: 100%;
-  background: #eee;
-  border: 0;
-  font-size: 22px;
-  line-height: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px; height: 40px;
+  border: 0; background: transparent;
+  font-size: 28px; line-height: 1;
   cursor: pointer;
-  z-index: 5;
-  /* 세로 구분선 */
-  box-shadow: inset -1px 0 0 rgba(0,0,0,.15), inset 1px 0 0 rgba(0,0,0,.15);
+  user-select: none;
+  z-index: 5; /* 슬라이드보다 위에 표시 */
+}
+.mid-arrow.prev{ left: 8px; }
+.mid-arrow.next{ right: 8px; }
+
+/* 접근성용 포커스 표시 */
+.mid-arrow:focus-visible{
+  outline: 2px solid #222;
+  outline-offset: 2px;
 }
 
-/* 위치: 3칸 그리드 사이에 정확히 들어오게 */
-.mid-arrow.prev{ left: calc(33.333% - 24px); transform: translateX(-50%); }
-.mid-arrow.next{ left: calc(66.666% + 24px); transform: translateX(-50%); }
-
-/* 접근성 포커스 */
-.mid-arrow:focus{ outline: 2px solid #222; }
-
-/* 반응형(선택): 좁은 폭에서 화살표 조금 줄이기 */
+/* 반응형으로 로고 크기 살짝 축소 (선택) */
 @media (max-width: 768px){
-  .mid-arrow{ width: 40px; font-size: 18px; }
-  .inline-slick .slick-slide{ padding: 0 16px; }
-  .mid-arrow.prev{ left: calc(33.333% - 16px); }
-  .mid-arrow.next{ left: calc(66.666% + 16px); }
+  .inline-slick .slide img{ height: 32px; }
 }
+
+
+
+
+
 
 
 

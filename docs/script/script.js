@@ -348,36 +348,29 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+window.addEventListener('DOMContentLoaded', function(){
+  const $rail  = $('.logo-rail');
+  const $slick = $rail.find('.inline-slick');
 
-
-
-// 여기부터 슬릭 슬라이드 //  
-
-$(function(){
-  const $track = $('.inline-slick');
-
-  // 중복 초기화 방지
-  if ($track.hasClass('slick-initialized')) $track.slick('unslick');
-
-  $track.slick({
-    slidesToShow: 3,
+  $slick.slick({
+    infinite: true,
+    slidesToShow: 3,   // 그대로 유지
     slidesToScroll: 1,
-    infinite: false,
-    speed: 300,
+    speed: 400,
+    autoplay: true,
+    autoplaySpeed: 2000,
     arrows: true,
-    prevArrow: $('.mid-arrow.prev'),
-    nextArrow: $('.mid-arrow.next'),
-    // 필요하면 반응형 추가
+    prevArrow: $rail.find('.prev'),
+    nextArrow: $rail.find('.next'),
     responsive: [
-      { breakpoint: 992, settings: { slidesToShow: 3 } },
-      { breakpoint: 640, settings: { slidesToShow: 2 } }
+      { breakpoint: 768, settings: { slidesToShow: 2 } },
+      { breakpoint: 480, settings: { slidesToShow: 1 } }
     ]
   });
-
-  // 부모 너비가 0이었다가 표시되는 경우 대비
-  setTimeout(()=> $track.slick('setPosition'), 0);  
 });
- 
+
+
+
 
 
 
