@@ -1,150 +1,97 @@
 <!-- 메인 배너 종횡  -->
 
-window.addEventListener('DOMContentLoaded', function () {
-  const imgs = document.querySelectorAll('.banner-anim');
-  if (imgs.length < 3) return; // 안전장치
+// 메인 배너 종횡 (초기화/리셋 없이 무한 루프)
+window.addEventListener('DOMContentLoaded', () => {
+  const banner = document.querySelector('.swiper');
+  const imgs   = Array.from(document.querySelectorAll('.banner-anim'));
+  if (!banner || imgs.length < 3) return;
 
   // ------ 설정값 ------
-  // 반응형을 원하면 imgWidth = banner.offsetWidth 로 두세요.
-  const banner = document.querySelector('.swiper');
-  const getImgWidth = () => banner ? banner.offsetWidth : 1920;
-  let imgWidth = getImgWidth();
-
   const expandDuration = 500;   // 애니메이션 시간(ms)
-  const delayBetween   = 4000;    // 배너 사이 간격(ms)
+  const delayBetween   = 4000;  // 배너 사이 간격(ms)
+  const easing         = 'cubic-bezier(0.4, 0, 0.2, 1)';
 
-  // 리사이즈 시에도 자연스럽게
-  window.addEventListener('resize', () => {
-    imgWidth = getImgWidth();
+  // ------ 초기 스타일(한 번만) ------
+  // scaleX로 펼치므로 가로는 100%, 위치는 겹치게 고정
+  Object.assign(banner.style, { position: banner.style.position || 'relative' });
+  imgs.forEach((el, i) => {
+    Object.assign(el.style, {
+      position: 'absolute',
+      inset: '0',          // top:0; right:0; bottom:0; left:0;
+      width: '100%',
+      height: '100%',
+      transform: 'scaleX(0)',
+      transformOrigin: 'left center',
+      visibility: 'hidden',
+      zIndex: String(2 + i),
+      willChange: 'transform, opacity'
+    });
   });
 
-  // ------ 유틸리티 ------
-  function disableTransition(el) {
-    el.style.transition = 'none';
-    void el.offsetWidth; // 강제 리플로우로 transition:none 적용 확정
-  }
-  function enableTransition(el) {
-    el.style.transition =
-      `left ${expandDuration}ms cubic-bezier(0.4,0,0.2,1), ` +
-      `width ${expandDuration}ms cubic-bezier(0.4,0,0.2,1)`;
-    void el.offsetWidth; // 적용 확정
-  }
-  function enableTransitionAll(list) {
-    list.forEach(enableTransition);
-  }
-  function disableTransitionAll(list) {
-    list.forEach(disableTransition);
-  }
+  // ------ 유틸 ------
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
-  // 모든 배너 초기화(transition OFF 상태에서 즉시 세팅)
-  function resetAll(visibleIndex = 0) {
-    disableTransitionAll(imgs);
-    imgs.forEach((img, i) => {
-      img.style.left = '0px';
-      img.style.width = '0px';
-      img.style.visibility = (i === visibleIndex) ? 'visible' : 'hidden';
-      img.style.zIndex = String(2 + i);
-    });
-    void banner?.offsetWidth; // 스타일 확정
-  }
-
-  // ------ 시퀀스 1: 1→2→3 (좌→우) ------
-  function expandLeftToRight(index) {
-    if (index === 0) {
-      // 루프 첫 진입: 초기화는 transition OFF로, 이후 ON으로 전환
-      resetAll(0);
-      requestAnimationFrame(() => {
-        enableTransitionAll(imgs);
-      });
-    }
-
-    if (index >= imgs.length) {
-      // 1세트 끝 → 1번 우→좌 시퀀스로
-      setTimeout(() => expandRightToLeft(), delayBetween);
-      return;
-    }
-
-    // 현재 배너 펼치기 (좌→우)
-    const el = imgs[index];
+  function expandLR(el) {
+    el.style.transformOrigin = 'left center';
     el.style.visibility = 'visible';
-    el.style.left = '0px';
-    el.style.width = imgWidth + 'px';
-    el.style.zIndex = String(2 + index);
-
-    setTimeout(() => {
-      expandLeftToRight(index + 1);
-    }, expandDuration + delayBetween);
+    // 항상 같은 축척 애니메이션 → 중간 리셋 불필요
+    const anim = el.animate(
+      [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }],
+      { duration: expandDuration, easing, fill: 'both' }
+    );
+    return anim.finished;
   }
 
-  // ------ 시퀀스 2: 1번 (우→좌) ------
-  function expandRightToLeft() {
-    // 순간 초기화(transition OFF) : 1번만 보이게 하고 오른쪽 바깥으로 이동 준비
-    disableTransitionAll(imgs);
-    imgs.forEach((img, i) => {
-      img.style.width = '0px';
-      img.style.left = '0px';
-      img.style.visibility = (i === 0) ? 'visible' : 'hidden';
-    });
-    imgs[0].style.left = imgWidth + 'px'; // 오른쪽 밖으로 점프
-    imgs[0].style.width = '0px';
-    imgs[0].style.zIndex = '10';
-    void banner?.offsetWidth;
-
-    // 다음 프레임에 transition ON 후 실제 애니메이션 시작
-    setTimeout(() => {
-      enableTransition(imgs[0]);
-      imgs[0].style.left = '0px';
-      imgs[0].style.width = imgWidth + 'px';
-
-      setTimeout(() => {
-        expandLeftToRightFrom2();
-      }, expandDuration + delayBetween);
-    }, delayBetween);
+  function expandRL(el) {
+    el.style.transformOrigin = 'right center';
+    el.style.visibility = 'visible';
+    const anim = el.animate(
+      [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }],
+      { duration: expandDuration, easing, fill: 'both' }
+    );
+    return anim.finished;
   }
 
-  // ------ 시퀀스 3: 2→3 (좌→우) ------
-  function expandLeftToRightFrom2() {
-    // 초기화(transition OFF)
-    disableTransition(imgs[1]);
-    disableTransition(imgs[2]);
-
-    imgs[0].style.visibility = 'hidden';
-    imgs[1].style.visibility = 'visible';
-    imgs[2].style.visibility = 'visible';
-
-    imgs[1].style.left = '0px';
-    imgs[1].style.width = '0px';
-    imgs[1].style.zIndex = '11';
-
-    imgs[2].style.left = '0px';
-    imgs[2].style.width = '0px';
-    imgs[2].style.zIndex = '12';
-
-    void banner?.offsetWidth;
-
-    // transition ON 후 2→3 순차 확장
-    requestAnimationFrame(() => {
-      enableTransition(imgs[1]);
-      enableTransition(imgs[2]);
-
-      setTimeout(() => {
-        imgs[1].style.width = imgWidth + 'px';
-
-        setTimeout(() => {
-          imgs[2].style.width = imgWidth + 'px';
-
-          // 한 세트 완료 → 다시 1→2→3 좌→우 루프 재시작
-          setTimeout(() => expandLeftToRight(0), expandDuration + delayBetween);
-        }, expandDuration + delayBetween);
-      }, delayBetween);
-    });
+  // 다음 컷으로 넘어갈 때, 방금 재생한 컷은 감추어 겹침 최소화
+  function hide(el) {
+    // fill:'both'로 scaleX(1) 상태는 유지되지만, 가려 놓으면 깜빡임 없음
+    el.style.visibility = 'hidden';
   }
 
-  // ------ 루프 시작 ------
-  expandLeftToRight(0);
+  // ------ 메인 루프 ------
+  // 요구 흐름: 1→2→3(좌→우) → 1(우→좌) → 2→3(좌→우) → 반복
+  async function runLoop() {
+    const [b1, b2, b3] = imgs;
+    while (true) {
+      // 1,2,3 좌→우
+      await expandLR(b1); await sleep(delayBetween); hide(b1);
+      await expandLR(b2); await sleep(delayBetween); hide(b2);
+      await expandLR(b3); await sleep(delayBetween); hide(b3);
+
+      // 1 우→좌
+      await expandRL(b1); await sleep(delayBetween); hide(b1);
+
+      // 2,3 좌→우
+      await expandLR(b2); await sleep(delayBetween); hide(b2);
+      await expandLR(b3); await sleep(delayBetween); hide(b3);
+      // 자연 반복 (초기화 없음)
+    }
+  }
+
+  // 반응형: scaleX 기반이라 별도 재계산 불필요(배너 폭이 변하면 자동 적응)
+  // 그래도 강하게 보장하려면 아래 정도만:
+  window.addEventListener('resize', () => {
+    // 아무 것도 하지 않아도 됨. 필요한 경우 will-change 유지 정도만.
+    imgs.forEach(el => (el.style.willChange = 'transform, opacity'));
+  });
+
+  runLoop();
 });
 
+
  
+
+
 <!-- prev 페이드 -->
 
 window.addEventListener('DOMContentLoaded', function() {
@@ -158,7 +105,7 @@ window.addEventListener('DOMContentLoaded', function() {
   const interval = 4000;     // 4초 간격
 
   imgs.forEach(img => {
-    img.style.opacity = '0.5';
+    img.style.opacity = '1';
     img.style.transition = `opacity ${fadeDuration}ms`;
     img.style.position = 'absolute';
     img.style.left = '0';
@@ -169,7 +116,7 @@ window.addEventListener('DOMContentLoaded', function() {
   function showSlide(idx) {
     imgs.forEach((img, i) => {
       img.style.zIndex = (i === idx) ? 2 : 1;
-      img.style.opacity = (i === idx) ? '0.5' : '0';
+      img.style.opacity = (i === idx) ? '1' : '0';
     });
   }
 

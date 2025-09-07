@@ -3,15 +3,16 @@
 
 
 
-html, body {
-  font-size: 62.5%; /* 16px × 0.625 = 10px */      
+html {
+  font-size: 62.5%; /* 16px × 0.625 = 10px */    
+  overflow-x: hidden ;   
 } 
 
 
 body {
     margin : 0 ; 
     padding : 0 ; 
-   font-size: 1.8rem ;  
+   font-size: 1.6rem ;   
   }
  
 
@@ -30,8 +31,10 @@ body {
  background-color: #fff;
  position: relative;
  width: 100% ; 
+ max-width: 1820px ; 
+ margin : auto ; 
  height : 114px ; 
- border-bottom: #999;     
+ border-bottom: #999;      
 }
 
 .header-container {   
@@ -178,21 +181,6 @@ ul.dep1>li.depth1 {
   text-align : center ; 
 }      
 
-/* ul.dep1>li.depth1:first-child{
-  text-align : left ; 
-}
-
- ul.dep1>li.depth1:nth-child(4) {
-  position : relative ; 
-  width : 110px ; 
-  text-align : center ; 
-}    */
-
-/*  ul.dep1>li.depth1:nth-child(5) {
-  position : relative ; 
-  width : 110px ; 
-  text-align : center ; 
-}  */    
 
 ul.dep1>li.depth1:last-child {
   width : 150px ; 
@@ -276,39 +264,45 @@ ul.dep1:focus-within ~ .w100 {
   height: 400px; } /* 원하는 드롭다운 높이 */ 
 
 
-
-
+/* 스와이퍼 시작 */   
 
 
      .swiper {  
-      width : 100% ;       
-      max-width : 2100px ;      
-      height : 1080px ;  
-      margin: 20px auto ;
-      padding-top : 70px ;               
-
+      width : 100% ;           
+      max-width : 1920px ; 
+      height : 1080px ;             
+      margin : 40px auto ;         
+      position : relative ;       
     } 
 
 
     .swiper-wrapper{
-         margin-left : 180px ;       
-         width : 100% ; 
-        max-width : 1920px ;   
-        height : 1080px ;             
+     margin-left : 170px ;       
+     width : 100% ; 
+     max-width : 1920px ;    
+     height : 1080px ;                     
     }
 
  
-    .prev_box{
+    .prev_box{ 
       width : 100% ; 
-      max-width: 2100px ; 
-      height : 1080px ;  
-      transform: translateX(-180px);         
+      max-width: 800px ; 
+      height : 1080px ;          
+      z-index : 1000 ;      
+      top : 0 ; 
+      left : 0 ;  
+      padding : 0 ; 
     }  
 
-    .prev01, .prev02, .prev03, .prev04{
-      width : 2100px ; 
-      height : 1080px ;      
-    }
+    
+   .prev_box img {
+    width : 100% ; 
+    height : 100%  ;      
+   }
+
+
+
+
 
 
  /* 배너 컨테이너가 기준점이 되도록 */
@@ -422,10 +416,6 @@ ul.dep1:focus-within ~ .w100 {
   top: 8px;
   right: 8px;
 }
-
-
-
-
 
 
 
@@ -704,15 +694,15 @@ ul.dep1:focus-within ~ .w100 {
 .art_culture{  
   width : 100% ; 
   max-width : 2000px ;  
-  height : 1000px ; 
+  height : 800px ; 
   margin : auto ;     
   margin-top: 180px ; 
   padding-top : 30px ; 
 }
 
-.art_culture .title_a {
-  margin-bottom: 60px ;
-}
+ .art_culture .title_a {
+  margin-bottom: 60px ; } 
+
 
 
 
@@ -741,8 +731,7 @@ ul.dep1:focus-within ~ .w100 {
   width : 1520px ; 
   height : 480px ;    
   transform: translateX(100px);  
-  transform: translateY(-500px);   
-  
+  transform: translateY(-500px);      
 }    
 
 .artimg7 {
@@ -778,7 +767,7 @@ ul.dep1:focus-within ~ .w100 {
 }
 
 .artimg9 > a > img {
-      width : 100% ; 
+  width : 100% ; 
   height : 100% ;   
 }
 
@@ -792,7 +781,7 @@ ul.dep1:focus-within ~ .w100 {
   width: 100%;
   max-width: 1920px;
   height : auto ; 
-  margin-top: 180px ; 
+  margin-top: 160px ; 
   margin-right : auto ; 
   margin-left : auto ; 
   padding-top: 30px;        
@@ -841,10 +830,6 @@ ul.dep1:focus-within ~ .w100 {
 /* 위치를 "사이"로 조정 */
 .mid-arrow.prev{ left: 35%; }   /* 가운데 왼쪽 */
 .mid-arrow.next{ right: 35%; }  /* 가운데 오른쪽 */
-
-
-
-
 
 
 
@@ -1003,22 +988,6 @@ font-weight: 300 ;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* 메인 배너 애니메이션 */
 
 .swiper-slide {
@@ -1029,14 +998,21 @@ font-weight: 300 ;
   overflow: hidden;  
 }
 
-/*   .swiper-slide {
-      text-align: center;
-      font-size: 18px;    
-      justify-content: center;
-      align-items: center; 
-    } */
+
 
 .banner-anim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;            /* JS에서 키움 */
+  height: 100%;  
+  object-fit: cover;
+  visibility: hidden;  /* JS에서 보이게 전환 */
+  /* transition은 기본적으로 꺼둠 (JS에서 on/off 제어) */
+  transition: none;
+}
+
+.banner-anim-2 {
   position: absolute;
   top: 0;
   left: 0;
