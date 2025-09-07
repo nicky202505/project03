@@ -272,7 +272,7 @@ ul.dep1:focus-within ~ .w100 {
       max-width : 1920px ; 
       height : 1080px ;             
       margin : 40px auto ;         
-      position : relative ;       
+      position : relative ;        
     } 
 
 
@@ -280,7 +280,8 @@ ul.dep1:focus-within ~ .w100 {
      margin-left : 170px ;       
      width : 100% ; 
      max-width : 1920px ;    
-     height : 1080px ;                     
+     height : 1080px ;          
+          position : relative ;                
     }
 
  
@@ -301,38 +302,30 @@ ul.dep1:focus-within ~ .w100 {
    }
 
 
-
-
-
-
- /* 배너 컨테이너가 기준점이 되도록 */
-.swiper.horizontals { position: relative; }
-
-
-
-
-
 /* 배너 컨테이너가 기준점이 되도록 */
-.swiper.horizontals { position: relative; }
+.swiper.horizontals { position: relative; } 
+
 
 /* 미니 박스: 최초 노출 */
 .mini_box {
-  position: absolute;
-  right: 16px;
-  bottom: 16px;
+  position: fixed ; 
+  right: 0px ;  
+  bottom : 0px ; 
   z-index: 9999;             /* 슬라이드 위 */
   cursor: pointer;
   user-select: none;   
-  background-color: #a13939;  
-  width : 200px  ; 
-  height : 200px  ;   
+  background-color: #222;   
+  width : 150px  ; 
+  height : 150px  ;   
 } 
 
-.mini_box{
-  position:absolute; right:16px; bottom:16px;
-  z-index:9999; cursor:pointer;
+
+
+.mini_box{  
+  z-index:9999; 
+  cursor:pointer;
   opacity:1; visibility:visible;
-  transition: opacity .2s ease, visibility .2s ease;
+  transition: opacity .2s ease, visibility .2s ease;   
 }
 
 /* 패널 열림 상태: mini_box 가리기 */
@@ -341,35 +334,38 @@ ul.dep1:focus-within ~ .w100 {
 }
 
 .chatbot { 
-  position: relative ; 
-  width: 80px;
-  height: 80px;  
-  transform: translate(80%, -120%);
-  z-index: 10000;
+  position: fixed; 
+  width: 72px;
+  height: 72px;  
+  bottom : 20px ; 
+  right : 35px ; 
+  bottom : 160px; 
+  z-index: 10000; 
 }
 
-.chatbot img {
+ .chatbot img {
   width: 100% ; 
-  height: 100% ; 
-}
+  height: 100% ; }   
 
-/* 사이드 인포: 초기는 화면 밖(오른쪽) */
+
+/* 사이드 인포: 초기는 화면 밖(오른쪽) */ 
+
 .side_info {
   position: absolute;
   top: 16px;
   right: 2px;
-  width: 500px  ; 
-  height : 1060px ; 
-  z-index: 9997;
+  width: 600px  ;     
+  height : 1080px ;  
+  z-index: 15000 ; 
   transform: translateX(110%);
   opacity: 0;
   transition: transform .35s ease, opacity .35s ease;
   /* 예시 배경/레이어 */
-  background: #614848;
+  background: #222222; 
   box-shadow: 0 8px 24px rgba(0,0,0,.12);
   border-radius: 4px;
-  padding: 16px; 
-}
+  padding: 16px;    
+} 
 
 /* 후크: 패널 옆에 딸려 나오는 장식 요소 */
 .hook {
@@ -387,7 +383,7 @@ ul.dep1:focus-within ~ .w100 {
 }
 
 /* 닫혀 있을 때는 포인터 막기 (스와이프 방해 방지) */
-.side_info[aria-hidden="true"],
+.side[aria-hidden="true"],
 .hook[aria-hidden="true"] {
   pointer-events: none;
 }
@@ -420,9 +416,7 @@ ul.dep1:focus-within ~ .w100 {
 
 
 
-
-
-
+/* 메인 콘텐츠 시작 */ 
 
 
 .main-container {
