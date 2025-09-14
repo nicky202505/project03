@@ -25,7 +25,13 @@
 
 
 
-   <body>  
+   <body>     
+
+
+
+
+   
+  
     
     <!-- 헤더  -->
     <div class="header-wrap"> 
@@ -113,9 +119,8 @@
                 <li><a href="#">천안아산점</a></li></ul>
               <ul><li><a href="#">센텀점</a></li>
                 <li><a href="#">타임스퀘어점</a></li></ul>
-              <ul><a href="#">
-                <li><a href="#">수원점</a></li>
-              </a>
+              <ul>
+                <li><a href="#">수원점</a></li>              
                 <li><a href="#">파주점</a></li></ul>
             </li>
           </ul>
@@ -253,7 +258,7 @@
           </ul>
         </li>
         <li class="depth2">
-          <h3><a href=""3>신세계 문화홀 </a></h3> 
+          <h3><a href="#">신세계 문화홀 </a></h3> 
           <ul class="dep3">
             <li> 공연 </li>
             <li> 문화홀 안내 </li> 
@@ -307,7 +312,7 @@
           </ul>
         </li>
         <li class="depth2">
-          <h3><a href=""3>고객의견 </a></h3> 
+          <h3> <a href="#">고객의견 </a></h3> 
           <ul class="dep3">
             <li> 공연 </li>
             <li> 문화홀 안내 </li>  
@@ -366,55 +371,63 @@
      
 <div class="swiper horizontals">       
   
-  <!-- 열림 -->
-  
-  <div class="swiper-wrapper">               <!-- 열림 -->
 
-                                 
+<div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <!-- 배경/배너 이미지들 -->
+      <img src="img/banner01.jpg" alt="배너1" class="banner-anim" />
+      <img src="img/banner02.png" alt="배너2" class="banner-anim" />
+      <img src="img/banner03.png" alt="배너3" class="banner-anim" />
+      <img src="img/banner04.png" alt="배너4" class="banner-anim" />
 
-    <div class="swiper-slide">            <!-- 열림 --> 
-      <img src="img/banner01.jpg" alt="배너1" class="banner-anim" />                
-      <img src="img/banner02.png" alt="배너2" class="banner-anim" />      
-      <img src="img/banner03.png" alt="배너3" class="banner-anim" />   
-      <img src="img/banner04.png" alt="배너4" class="banner-anim" />              
+      <!-- 여기에 텍스트 캡션 레이어 -->
+      <div class="caption" aria-live="polite">      
+        <div class=page_line>            
+          <div class="count line1"><span>01</span></div>
+          <div class="count line2"><span>02</span></div> 
+          <div class="count line3"><span>03</span></div>
+          <div class="count line4"><span>04</span></div>  
+        </div>  
+          
 
+        <h2 class="t1">BEYOND SHINSEGAE</h2>
+        <p class="t2">SIZZLING SUMMER VIBES</p>       
+       <div class="more-info-2">             
+         <span class="line top"></span>
+         <span class="line right"></span>
+         <span class="line bottom"></span>
+        <span class="line left"></span> 
+        view more         
+       </div> 
+     </div>    
 
-    </div>         
-    <!-- swiper-slide 닫힘 (빠져있던 부분) -->
-
-  </div>        
  
-  <div class="prev_box">                   <!-- 열림 -->
+   
+
+  </div>    <!-- swiper-slide -->   
+  
+    
+
+    
+  </div> <!-- wrapper --> 
+    
+  
+  <div class="prev_box">                   <!-- Prev 열림 -->
        <img src="img/pr01.png" alt="배너1" class="prev01"/>
       <img src="img/pr02.png" alt="배너1" class="prev02"/>
       <img src="img/pr03.png" alt="배너1" class="prev03"/>
-      <img src="img/pr04.png" alt="배너1" class="prev04"/>  
-       
-            
+      <img src="img/pr04.png" alt="배너1" class="prev04"/>                     
   </div>    
 
+     <div class="chatbox">
+       <div class="chatbot">
+           <a href="#"><img src="img/icon-sbot.png" alt="챗봇"></a>
+           </div>
+     </div> 
 
-   <!-- ✅ 오버레이 UI (wrapper 바깥) -->
-
-    <div class="side_info" aria-hidden="true">
-      <button class="close_btn" type="button" aria-label="사이드 정보 닫기">X</button>
-      <p>오늘의 날씨는 </p>
-    
-    </div>
-    <div class="mini_box" role="button" tabindex="0" aria-label="사이드 정보 열기">  
-    </div>
-
-            <div class="chatbot">
-    <a href="#"><img src="img/icon-sbot.png" alt="챗봇"></a>
-    </div>
-    <div class="hook" aria-hidden="true"></div> 
-
-  <div class="swiper-pagination"></div>      
-
-  </div>                                       <!-- swiper horizontals 닫힘 -->  
-
+  </div> <!-- horizontal 닫힘  -->  
  
- <div class="main-container">   
+ <div class="main-container">     
 
 <!-- 쇼핑 뉴스  -->
       <div class="shopping_now">
@@ -538,16 +551,6 @@
   <button type="button" class="mid-arrow prev" aria-label="이전">‹</button>
   <button type="button" class="mid-arrow next" aria-label="다음">›</button>
 </div>   
-
-
-
-
-
-
-
-
-
-
 
            <!--  브랜드 갤러리 -->
           <div class="gallery-box">
@@ -774,7 +777,6 @@
             <li>이용약관</li>
             <li>신백멤버스 회원약관</li>             
             <li>신세계포인트 이용약관</li> 
-
           </ul>               
       </div>
         <div class="combo">
@@ -801,7 +803,8 @@
           <li> <img src="img/wa.png" alt="접근성준수"></li>  
         </ul>
       </div>  
-  </footer>
+      </div>
+    </footer> 
 
 <script src="script/script.js"></script>  
 

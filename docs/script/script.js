@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
       transformOrigin: 'left center',
       visibility: 'hidden',
       zIndex: String(2 + i),
-      willChange: 'transform, opacity'
+      willChange: 'transform, opacity'  
     });
   });
 
@@ -89,6 +89,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
  
 
 
@@ -129,44 +130,12 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
-document.addEventListener('DOMContentLoaded', function() {
-  const sideInfo = document.querySelector('.side_info');
-  const miniBox  = document.querySelector('.mini_box');
-  const closeBtn = document.querySelector('.close_btn'); 
-  const hook     = document.querySelector('.hook');
-
-  if (!sideInfo || !miniBox || !closeBtn) return;
-
-  // 미니박스 클릭 → 패널 열기 + 미니박스 숨김
-  miniBox.addEventListener('click', function() {
-    sideInfo.style.display = 'block';
-    hook.style.display = 'block';
-    // 리플로우 강제해서 transition이 먹도록
-    void sideInfo.offsetWidth;
-
-    sideInfo.classList.add('open');
-    hook.classList.add('open');
-    miniBox.style.display = 'none';
-  });
- 
-  // 닫기 버튼 클릭 → 패널 닫기 + 미니박스 다시 보이기
-  closeBtn.addEventListener('click', function() {
-    sideInfo.classList.remove('open'); 
-    hook.classList.remove('open'); 
-
-    sideInfo.addEventListener('transitionend', function onEnd(e) {
-      if (e.propertyName !== 'transform') return; 
-      sideInfo.removeEventListener('transitionend', onEnd);
-
-      sideInfo.style.display = 'none';
-      hook.style.display = 'none';
-      miniBox.style.display = 'block';
-    });
+// 페이지가 로드되면 .more-info-2에 'hover' 클래스를 추가
+window.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.more-info-2').forEach(function(el) {
+    el.classList.add('hover');
   });
 });
-
-
 
 
 <!-- 쇼핑 나우 -->  

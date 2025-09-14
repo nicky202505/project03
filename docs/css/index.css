@@ -287,7 +287,7 @@ ul.dep1:focus-within ~ .w100 {
  
     .prev_box{ 
       width : 100% ; 
-      max-width: 800px ; 
+      max-width: 180px ; 
       height : 1080px ;          
       z-index : 1000 ;      
       top : 0 ; 
@@ -302,117 +302,107 @@ ul.dep1:focus-within ~ .w100 {
    }
 
 
+ .horizontals .swiper-slide { position: relative; overflow: hidden; }
+
+.caption{
+  position: absolute; left: 12%; bottom: 50%;
+  max-width: min(48ch, 60vw);
+  color: #fff; z-index: 5; pointer-events: none;
+  text-shadow: 0 2px 18px rgba(0,0,0,.35);
+}
+.caption .t1{ font-weight: 700; line-height: 1.1; font-size: clamp(28px,4vw,56px); letter-spacing: .02em; }
+.caption .t2{ margin-top: .6em; font-size: clamp(14px,1.6vw,22px); opacity: .9; } 
+
+
 /* 배너 컨테이너가 기준점이 되도록 */
-.swiper.horizontals { position: relative; } 
-
-
-/* 미니 박스: 최초 노출 */
-.mini_box {
-  position: fixed ; 
-  right: 0px ;  
-  bottom : 0px ; 
-  z-index: 9999;             /* 슬라이드 위 */
-  cursor: pointer;
-  user-select: none;   
-  background-color: #222;   
-  width : 150px  ; 
-  height : 150px  ;   
-} 
+.swiper.horizontals {position: relative; } 
 
 
 
-.mini_box{  
-  z-index:9999; 
-  cursor:pointer;
-  opacity:1; visibility:visible;
-  transition: opacity .2s ease, visibility .2s ease;   
-}
-
-/* 패널 열림 상태: mini_box 가리기 */
-.swiper.horizontals.is-open .mini_box{
-  opacity:0; visibility:hidden; pointer-events:none;
-}
-
-.chatbot { 
-  position: fixed; 
+.chatbot {
+  position: fixed;
   width: 72px;
-  height: 72px;  
-  bottom : 20px ; 
-  right : 35px ; 
-  bottom : 160px; 
-  z-index: 10000; 
+  height: 72px;
+  right: 35px;
+  bottom: 100px;
+  z-index: 10000;
 }
 
- .chatbot img {
-  width: 100% ; 
-  height: 100% ; }   
-
-
-/* 사이드 인포: 초기는 화면 밖(오른쪽) */ 
-
-.side_info {
-  position: absolute;
-  top: 16px;
-  right: 2px;
-  width: 600px  ;     
-  height : 1080px ;  
-  z-index: 15000 ; 
-  transform: translateX(110%);
-  opacity: 0;
-  transition: transform .35s ease, opacity .35s ease;
-  /* 예시 배경/레이어 */
-  background: #222222; 
-  box-shadow: 0 8px 24px rgba(0,0,0,.12);
-  border-radius: 4px;
-  padding: 16px;    
+.chatbot img {
+  width: 100%;
+  height: 100%;
 } 
 
-/* 후크: 패널 옆에 딸려 나오는 장식 요소 */
-.hook {
-  position: relative;
-  top: 16px;
-  right: 550px ;   
-  width: 200px;             /* 모양에 맞게 수정 */
-  height: 200px;
-  z-index: 10000;
-  transform: translateY(300%); 
-  transition: transform .35s ease;  
-  /* 예시 스타일 */
-  background: #eee;
-  border-radius: 6px 0 0 6px;  
-}
 
-/* 닫혀 있을 때는 포인터 막기 (스와이프 방해 방지) */
-.side[aria-hidden="true"],
-.hook[aria-hidden="true"] {
-  pointer-events: none;
-}
 
-/* 열림 상태 */
-.swiper.horizontals.is-open .side_info {
-  transform: translateX(0);
-  opacity: 1;
-}
-.swiper.horizontals.is-open .hook {
-  transform: translateX(0);
-}
-
-/* 닫기 버튼 예시 */
-.close_btn {
-  appearance: none;
-  border: 0;
-  background: #222;
-  color: #fff;
-  width: 28px;
-  height: 28px;
-  line-height: 28px;
-  border-radius: 50%;
-  cursor: pointer;
+.chatbot:before {
+  content: '';
+  display: block;
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: -20px;
+  left: -160px ; 
+  width: 180px;
+  height: 90px;
+  background-image: url(../img/chat_text.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 10001;  
 }
 
+
+.page_line {
+  display: flex;   
+  justify-content: flex-start; /* 좌측 정렬 */
+  align-items: center;
+}
+
+.line1, .line2, .line3, .line4 {
+  width: 15%;
+  height: 2px;
+  background: #ece9e9;
+  opacity: 0.3;
+  animation: highlight 20s infinite; /* 4개 합쳐서 20초 루프 */
+}
+
+/* 각 선에 시작 지연을 줘서 배너 순서에 맞춤 */
+.line1 { animation-delay: 0s; }
+.line2 { animation-delay: 5s; }
+.line3 { animation-delay: 10s; }
+.line4 { animation-delay: 15s; }
+
+@keyframes highlight {
+  0%   { opacity: 0.3; }
+  5%   { opacity: 1; }   /* 첫 1초 동안 밝아짐 */
+  25%  { opacity: 1; }   /* 4초 유지 */
+  30%  { opacity: 0.3; } /* 다음 배너 넘어가면 다시 흐려짐 */
+  100% { opacity: 0.3; }
+}
+
+.page_line {
+  display: flex;  
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.line {
+  position: relative;
+  width: 15%;
+  height: 2px;
+  background: #ece9e9;
+  opacity: 0.3;
+  overflow: hidden;
+}
+
+/* 숫자 스타일 */
+.line span {
+  position: absolute;
+  top: -100px;   /* 라인 위쪽으로 띄움 */
+  left: 50%;
+  transform: translateX(-50%);  
+  font-size: 10px;
+  font-weight: 500;
+  color: #666;
+}
 
 
 
@@ -494,26 +484,126 @@ ul.dep1:focus-within ~ .w100 {
   margin: 36px auto 0;
   font-size: 14px;
   color: #a13939;
-  cursor: pointer;
-}
+  cursor: pointer;  
+} 
+
+
 
 /* 공통 라인 스타일 */
-.more-info .line {
+.more-info .line  
+{
   position: absolute;
   background: #a13939;
   transition: transform 0.3s ease;
-}
+} 
+
+
+
 
 /* 밑줄(기본 보이게) */
-.more-info .bottom {
+.more-info .bottom 
+{
   bottom: 0;
   left: 0;
   width: 100%;
   height: 2px;  
 }
 
-/* 나머지 변 (처음엔 숨김) */
-.more-info .top {
+
+/* 나머지 변 (처음엔 숨김) */ 
+
+.more-info .right  
+ {
+  bottom: 0;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition-delay: 0.2s; 
+}
+
+.more-info .top
+ {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition-delay: 0.2s;
+}
+
+.more-info .left 
+{
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition-delay: 0.2s;   
+}
+
+
+/* hover 시 순차적으로 라인 표시 */
+
+.more-info:hover .right 
+{
+  transform: scaleY(1); 
+}
+
+.more-info:hover .top 
+{
+  transform: scaleX(1); 
+}
+
+.more-info:hover .left   
+{
+  transform: scaleY(1);
+} 
+
+
+.more-info-2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 126px;
+  height: 45px; 
+  font-size: 14px; 
+  color: #fff ;   
+  top : 200px ;  
+  left : 300px ; 
+} 
+
+.more-info-2 .line{
+  position: absolute;
+  background: #fff ; 
+  transition: transform 0.5s ease;
+}
+
+.more-info-2 .bottom 
+{
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;  
+}
+
+.more-info-2 .right  
+ {
+  bottom: 0;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition-delay: 0.1s; 
+}
+
+.more-info-2 .top
+ {
   top: 0;
   right: 0;
   width: 100%;
@@ -523,41 +613,22 @@ ul.dep1:focus-within ~ .w100 {
   transition-delay: 0.3s;
 }
 
-.more-info .right {
-  bottom: 0;
-  right: 0;
-  width: 2px;
-  height: 100%;
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition-delay: 0.1s;
-}
 
-.more-info .left {
+.more-info-2 .left 
+{
   top: 0;
   left: 0;
   width: 2px;
   height: 100%;
   transform: scaleY(0);
   transform-origin: top;
-  transition-delay: 0.4s;   
-}
-
-/* hover 시 순차적으로 라인 표시 */
-
-.more-info:hover .right {
-  transform: scaleY(1); 
-}
-
-.more-info:hover .top {
-  transform: scaleX(1); 
-}
-
-.more-info:hover .left {
-  transform: scaleY(1);
+  transition-delay: 0.4s;     
 }
 
 
+.more-info-2.hover .top { transform: scaleX(1); }
+.more-info-2.hover .right { transform: scaleY(1); }
+.more-info-2.hover .left { transform: scaleY(1); }  
 
 
 .shin_now{
@@ -567,7 +638,11 @@ ul.dep1:focus-within ~ .w100 {
   height : auto ; 
  text-align: center;  
   margin: 160px auto 0  ;     
-  padding : 30px ; }
+  padding : 30px ; }  
+
+
+
+
 
 
 
@@ -802,7 +877,7 @@ ul.dep1:focus-within ~ .w100 {
 .inline-slick .slide img{
   display: block;
   height: 100px;
-  width: auto;
+  width: auto; 
 }
 
 /* 커스텀 화살표 버튼 */
@@ -960,7 +1035,7 @@ ul.dep1:focus-within ~ .w100 {
   font-size: 2.4rem ;  
   font-weight: 400 ;
   font-family: 'Nanum Myeongjo', serif;
-  letter-spacing : 6 ;     
+  letter-spacing : 6px ;     
   text-align: center; 
 }
 
@@ -1036,7 +1111,7 @@ display: grid;
 grid-template-columns: 1fr 9fr ;   
 grid-template-rows: 2fr 1fr 7fr ;   
 font-size: 12px ; 
-color : 555 ; 
+color : #555 ; 
 } 
 
 
@@ -1078,7 +1153,7 @@ color : 555 ;
 
 .f_content ul{
   display: flex; 
-  padding-left : 20 ;  
+  padding-left : 20px ;  
 }
 
 .f_content ul:first-child li {
