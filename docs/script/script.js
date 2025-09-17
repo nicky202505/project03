@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
       transformOrigin: 'left center',
       visibility: 'hidden',
       zIndex: String(2 + i),
-      willChange: 'transform, opacity'  
+      willChange: 'transform, opacity'   
     });
   });
 
@@ -102,7 +102,7 @@ window.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.prev03'),
     document.querySelector('.prev04')
   ];
-  const fadeDuration = 2000; // 1초 페이드
+  const fadeDuration = 1000; // 1초 페이드
   const interval = 4000;     // 4초 간격
 
   imgs.forEach(img => {
@@ -135,7 +135,16 @@ window.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.more-info-2').forEach(function(el) {
     el.classList.add('hover');
   });
+});  
+
+
+
+window.addEventListener("load", () => {
+  document.querySelectorAll(".vertical-line").forEach(el => {
+    el.classList.add("active");
+  });
 });
+
 
 
 <!-- 쇼핑 나우 -->  
@@ -220,7 +229,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   );
-
 
 
 

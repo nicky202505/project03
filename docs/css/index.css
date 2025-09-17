@@ -21,7 +21,7 @@ body {
   }  
 
    a{
-    text-decoration: none;       
+    text-decoration: none;     
     color : #555 ; 
   }   
     
@@ -31,18 +31,18 @@ body {
  background-color: #fff;
  position: relative;
  width: 100% ; 
- max-width: 1820px ; 
- margin : auto ; 
+ max-width: 1920px ; 
+ margin : 0 auto ; 
  height : 114px ; 
- border-bottom: #999;      
+ border-bottom: #999;     
 }
 
 .header-container {   
   display: flex;
   width : 100% ; 
- max-width : 1920px ;    
+ max-width : 1820px ;    
   height: 70px;   
-  margin : auto ; 
+  margin : 0 auto ; 
    background-color: #fff;
   box-sizing: border-box;     
 }  
@@ -51,7 +51,7 @@ body {
 .util  {
   margin : auto ; 
   width : 100% ; 
-  max-width : 1920px ;     
+  max-width : 1820px ;     
   height: 44px;       
   text-align: right ;    
     display: flex;
@@ -225,12 +225,17 @@ ul.dep2 > li.depth2 {
 } 
 
 
+ul.dep2 > li.depth2:nth-child(6) {
+  transform : translateX(-60px) ; 
+}
+
 .depth3>ul {
     display : flex ;   
 } 
 
 .depth3>ul > li {
     width : 140px ;     
+    font-size: 1.4rem;
 }  
 
 
@@ -270,52 +275,167 @@ ul.dep1:focus-within ~ .w100 {
      .swiper {  
       width : 100% ;           
       max-width : 1920px ; 
-      height : 1080px ;             
-      margin : 40px auto ;         
+      height : 800px ;             
+      margin-top : 40px ; 
+      margin-left: auto ; 
+      margin-right: auto ;        
       position : relative ;        
     } 
 
 
     .swiper-wrapper{
-     margin-left : 170px ;       
+     margin-left : 180px ;       
      width : 100% ; 
      max-width : 1920px ;    
-     height : 1080px ;          
-          position : relative ;                
+     height : 800px ;          
+     position : relative ;                
     }
 
  
     .prev_box{ 
       width : 100% ; 
       max-width: 180px ; 
-      height : 1080px ;          
-      z-index : 1000 ;      
+      height : 800px ;          
       top : 0 ; 
       left : 0 ;  
       padding : 0 ; 
     }  
 
     
-   .prev_box img {
-    width : 100% ; 
-    height : 100%  ;      
+  /*  .prev_box img {
+    width : 100% ;      
    }
-
+ */
 
  .horizontals .swiper-slide { position: relative; overflow: hidden; }
 
 .caption{
-  position: absolute; left: 12%; bottom: 50%;
+  position: absolute; left: 12%; bottom: 40%;
   max-width: min(48ch, 60vw);
   color: #fff; z-index: 5; pointer-events: none;
-  text-shadow: 0 2px 18px rgba(0,0,0,.35);
+  text-shadow: 0 2px 18px rgba(0,0,0,.35); 
 }
-.caption .t1{ font-weight: 700; line-height: 1.1; font-size: clamp(28px,4vw,56px); letter-spacing: .02em; }
-.caption .t2{ margin-top: .6em; font-size: clamp(14px,1.6vw,22px); opacity: .9; } 
 
 
+.caption .t1{ line-height: 1.1; font-size: clamp(28px,4vw,56px); letter-spacing: .02em; }
+/* 50px 위로 이동 */
+.caption .t1 {
+  margin-top: -120px;
+}
+.caption .t2{ margin-top: .6em; font-size: clamp(14px,1.6vw,22px); opacity: .9; }     
+
+.caption .t2 {
+  transform: translateY(-30px);
+}
+
+
+.page_line {
+  display: flex;  
+  justify-content: flex-start;
+  align-items: center; 
+  transform: translateY(10px); } 
+
+.line1 span,
+.line2 span,
+.line3 span,
+.line4 span
+{
+  display: inline-block; 
+  transform: translateY(-40px) ;  
+  padding-left : 10px ; 
+}
+
+
+
+.line1, .line2, .line3, .line4 {
+  width: 15%;
+  height: 2px;
+  background: #ece9e9;
+  opacity: 0.3;
+  animation: highlight 20s infinite; /* 4개 합쳐서 20초 루프 */
+}
+
+/* 각 선에 시작 지연을 줘서 배너 순서에 맞춤 */
+.line1 { animation-delay: 0s; }
+.line2 { animation-delay: 5s; }
+.line3 { animation-delay: 10s; }
+.line4 { animation-delay: 15s; }
+
+@keyframes highlight {
+  0%   { opacity: 0.3; } 
+  5%   { opacity: 1; }   /* 첫 1초 동안 밝아짐 */
+  25%  { opacity: 1; }   /* 4초 유지 */
+  30%  { opacity: 0.3; } /* 다음 배너 넘어가면 다시 흐려짐 */
+  100% { opacity: 0.3; }
+}
+
+
+
+
+
+
+.vertical-line {
+  width: 2px;
+  height: 150px;                 /* 최종 높이 고정 */
+  background: #fff ; 
+  margin: 0 16px;
+  display: inline-block;
+  opacity: 0.7;                    /* 고정 */
+  transform-origin: top;         /* 꼭대기에서 시작 */
+  transform: translateY(380px) scaleY(0);   /* 처음엔 0 */
+  transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+
+.vertical-line:after {
+  content: '';
+  display: block;
+  width: 16px;           /* 화살표 이미지 너비 */
+  height: 16px;          /* 화살표 이미지 높이 */
+  margin: 0 auto;
+  margin-top: 150px;       /* 세로선과의 간격 */
+  background-image: url(../img/arrow_down.png);
+  background-repeat: no-repeat;
+  background-size: contain;  
+  transform: translateX(-7px);
+
+}
+
+.vertical-line.active {
+  transform: translateY(380px) scaleY(1);  
+  opacity : 1 ;  /* 위→아래로 펼쳐짐 */
+}
+
+
+
+
+.s_text { 
+  transform: translateY(350px); 
+}
+
+
+.line {  /* 더모어 라인 */
+  position: relative;
+  width: 15%;
+  height: 2px;
+  background: #993232;
+  opacity: 0.3;
+  overflow: hidden;
+}
+  
+
+/* 숫자 스타일 */
+.line span {
+  position: absolute;
+  top: -100px;   /* 라인 위쪽으로 띄움 */
+  left: 50%;
+  transform: translateX(-50%);  
+  font-size: 10px;
+  font-weight: 500;
+  color: #666;     
+}
 /* 배너 컨테이너가 기준점이 되도록 */
 .swiper.horizontals {position: relative; } 
+
 
 
 
@@ -323,16 +443,15 @@ ul.dep1:focus-within ~ .w100 {
   position: fixed;
   width: 72px;
   height: 72px;
-  right: 35px;
-  bottom: 100px;
+  right: 50px;
+  bottom: 50px;
   z-index: 10000;
 }
 
 .chatbot img {
   width: 100%;
   height: 100%;
-} 
-
+}
 
 
 .chatbot:before {
@@ -350,59 +469,6 @@ ul.dep1:focus-within ~ .w100 {
 }
 
 
-.page_line {
-  display: flex;   
-  justify-content: flex-start; /* 좌측 정렬 */
-  align-items: center;
-}
-
-.line1, .line2, .line3, .line4 {
-  width: 15%;
-  height: 2px;
-  background: #ece9e9;
-  opacity: 0.3;
-  animation: highlight 20s infinite; /* 4개 합쳐서 20초 루프 */
-}
-
-/* 각 선에 시작 지연을 줘서 배너 순서에 맞춤 */
-.line1 { animation-delay: 0s; }
-.line2 { animation-delay: 5s; }
-.line3 { animation-delay: 10s; }
-.line4 { animation-delay: 15s; }
-
-@keyframes highlight {
-  0%   { opacity: 0.3; }
-  5%   { opacity: 1; }   /* 첫 1초 동안 밝아짐 */
-  25%  { opacity: 1; }   /* 4초 유지 */
-  30%  { opacity: 0.3; } /* 다음 배너 넘어가면 다시 흐려짐 */
-  100% { opacity: 0.3; }
-}
-
-.page_line {
-  display: flex;  
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.line {
-  position: relative;
-  width: 15%;
-  height: 2px;
-  background: #ece9e9;
-  opacity: 0.3;
-  overflow: hidden;
-}
-
-/* 숫자 스타일 */
-.line span {
-  position: absolute;
-  top: -100px;   /* 라인 위쪽으로 띄움 */
-  left: 50%;
-  transform: translateX(-50%);  
-  font-size: 10px;
-  font-weight: 500;
-  color: #666;
-}
 
 
 
@@ -415,8 +481,7 @@ ul.dep1:focus-within ~ .w100 {
   height: auto; 
   box-sizing: border-box;     
   z-index: 1;  
-   padding-top: 180px;
-
+  padding-top: 180px; 
 }  
 
 
@@ -483,17 +548,17 @@ ul.dep1:focus-within ~ .w100 {
   height: 45px;
   margin: 36px auto 0;
   font-size: 14px;
-  color: #a13939;
+  color: #9c2323;
   cursor: pointer;  
 } 
 
 
 
 /* 공통 라인 스타일 */
-.more-info .line  
+.more-info .line 
 {
   position: absolute;
-  background: #a13939;
+  background: #9c2323;
   transition: transform 0.3s ease;
 } 
 
@@ -573,15 +638,18 @@ ul.dep1:focus-within ~ .w100 {
   height: 45px; 
   font-size: 14px; 
   color: #fff ;   
-  top : 200px ;  
-  left : 300px ; 
+  top : 240px ;  
+  left : 300px ;   
 } 
+
+
 
 .more-info-2 .line{
   position: absolute;
   background: #fff ; 
   transition: transform 0.5s ease;
 }
+
 
 .more-info-2 .bottom 
 {
